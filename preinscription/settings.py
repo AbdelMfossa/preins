@@ -108,13 +108,13 @@ DATABASES = {
     }
 }
 
-# DATABASES['default'] = dj_database_url.config(
-#     default="mysql://preinscription:'#Preinscription@2020!'@51.91.126.42:3306/'preinscriptions'",
-# )
+DATABASES['default'] = dj_database_url.config(
+    default="mysql://preinscription:%23Preinscription%402020!@51.91.126.42:3306/preinscriptions",
+)
 
-passw = str("%23Preinscription%402020!")
+# passw = str("%23Preinscription%402020!")
 
-DATABASES['default'] = dj_database_url.parse("mysql://preinscription:"+passw+"@omdes.cm:3306/preinscriptions")
+# DATABASES['default'] = dj_database_url.parse("mysql://preinscription:%23Preinscription%402020!@51.91.126.42:3306/preinscriptions")
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
