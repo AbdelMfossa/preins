@@ -1,0 +1,170 @@
+{% extends 'falshfsfse/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block content %}
+<div class="col-md-12">
+    <div id="actions" class="col-sm-12 text-center">
+	  Actions :
+		<!-- <a id="" href="">Modifier ses informations</a>&nbsp; |  -->
+		<!-- <a id="" href="">Recevoir le dossier</a>&nbsp; | -->
+	    <a href="{% url 'ecoledoctorale:pdf_view' dossier.num_ordre %}" target="_blank">Visualiser sa fiche</a> |
+	    <a href="{% url 'ecoledoctorale:pdf_download' dossier.num_ordre %}" target="_blank">Telecharger sa fiche</a>
+	</div><br><br>
+    <div>
+        <h3 style="/*line-height:35px;*/">Demande à l'UY1 : {{dossier.ecoledoc|upper}} (Code : <span style="color:green">{{dossier.num_ordre}}</span>)</h3>
+        <h3 style="/*line-height:35px;*/">DEMANDE D'INSCRIPTION EN CYCLE DE {{dossier.cycle|upper}}</h3>
+        <h5>Centre de Recherche et de Formation Doctorale : {{dossier.ecoledoc|upper}}</h5>
+        <h5>Unité de Recherche et de Formation Doctorale : {{dossier.uniterecherche|upper}}</h5>
+        <!-- <h5>Intitulé du Master : {{dossier.naturemasterun|upper}}</h5>
+        <h5>Option : {{dossier.specialitemasterun|upper}}</h5> -->
+    </div>
+
+    <div class="">        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">ETAT CIVIL</h3>
+            </div>
+            <div class="panel-body">
+                <b>N° Matricule :</b> {{dossier.matricule_doc_uy1|upper}}<br><br>
+                <b>Nom et prénom :</b> {{dossier.nom|upper}} {{dossier.prenom|upper}}<br>
+                <b>Date et lieu de naissance :</b> {{dossier.date_nais|date:"d/m/Y"}} à {{dossier.lieu_nais|upper}}<br>
+                <b>Région d'origine :</b> {{dossier.region_origine|upper}}<br>
+                <b>Nationalité :</b> {{dossier.nationality|upper}}<br>
+                <b>Département d'origine :</b> {{dossier.dept_origine|upper}}<br>
+                <b>Nom du père :</b> {{dossier.nom_pere|upper}}<br>
+                <b>Nom de la mère :</b> {{dossier.nom_mere|upper}}<br>
+                <b>Profession : </b>{{dossier.profession|upper}} <br>
+                <b>Lieu d'affectation :</b> {{dossier.lieu_affectation|upper}}<br>
+                <b>Grade :</b> {{dossier.grade|upper}} <br>
+                <b>Echelon :</b>  {{dossier.ech|upper}}<br>
+                <b>Adresse personnelle :</b> {{dossier.adresse_perso|upper}} <br>
+                <b>Téléphone :</b> {{dossier.tel|upper}} <br>
+                <b>E-mail :</b> {{dossier.email}}<br>
+                <b>Formation initiale :</b> {{dossier.formationinitiale|upper}} <br>
+                <b>Disponibilité :</b> {{dossier.disponibilite|upper}} <br>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Diplômes de Licence</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>Nature</th>
+                            <th>Spécialité</th>
+                            <th>Nombre d'années en Lience</th>
+                        </tr>
+                        <tr>
+                            <td>{{dossier.naturelicence|upper}}</td>
+                            <td>{{dossier.optionlicence|upper}}</td>
+                            <td>{{dossier.anneelicence|upper}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Master 1/Maitrise</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>Nature</th>
+                            <th>Spécialité</th>
+                            <th>Etablissement</th>
+                            <th>Département</th>
+                            <th>Nombre d'années en Master 1</th>
+                        </tr>
+                        <tr>
+                            <td>{{dossier.naturemasterun|upper}}</td>
+                            <td>{{dossier.specialitemasterun|upper}}</td>
+                            <td>{{dossier.etablissementmasterun|upper}}</td>
+                            <td>{{dossier.departementmasterun|upper}}</td>
+                            <td>{{dossier.anneemasterun|upper}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Détails sur l'inscription</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>Sujet du Master 2</th>
+                            <th>Spécialité</th>
+                            <th>Laboratoire d'accueil</th>
+                            <th>Intitulé du Master</th>
+                            <th>Option du Master</th>
+                        </tr>
+                        <tr class="dossier_show">
+                            <td>{{dossier.type_diplome|upper}}</td>
+                            <td>{{dossier.annee_obtention|upper}}</td>
+                            <td>{{dossier.mention}}</td>
+                            <td>{{dossier.moyenne}}</td>
+                            <td>{{dossier.moyenne}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Détails sur l'encadrement</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>Nom du Directeur 1</th>
+                            <th>Nom du Directeur 2</th>
+                        </tr>
+                        <tr>
+                            <td>{{dossier.encadreur1|upper}}</td>
+                            <td>{% if dossier.encadreur2 %} {{dossier.encadreur2|upper}} {% endif %} &nbsp;</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Financement et motivation</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <b>Source de financement : </b>{{dossier.sourcefinancement|upper}}<br><br>
+                    <b>Motivation : </b>{{dossier.motivationthese}}<br>
+                    {% if dossier.resumethese %} <b>Resume du projet de these : </b> {{dossier.resumethese}} {% endif %}<br>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Je déclare sur l'honneur que les informations saisies sont exactes.</div>
+            <div class="panel-body">
+                CONFIRMEE
+            </div>
+        </div>
+
+    </div>
+</div>
+        
+{% endblock content %}
+
+{% block aide %}
+
+{% endblock %}

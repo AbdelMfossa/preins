@@ -1,0 +1,189 @@
+{% extends 'falshfsfse/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block content %}
+    {% with titre="civilité"%}
+        {% include 'falshfsfse/menuetape.html' %}
+    {% endwith %}
+<div class="col-md-6">
+    <h3>{% trans 'Préinscription en' %} {{ request.session.fac }}</h3>
+    <h6>{% trans 'Tous les champs marqués d\'un' %} <span style="color:red; margin-top:3px;">*</span> {% trans 'sont obligatoires.' %}</h6>
+    <form id='civilite_form' class='f1' name='civilite_form'>
+        {% csrf_token %}
+        
+        {{ civilite_form| crispy }}
+        
+        <!-- <input type="button" onclick="prev()" name = "bouton_autre_prev" value="Précédent" class="btn btn-charte btn-lg" style="width: 116px"> -->
+        <input type="submit" value="Suivant" class="btn btn-charte btn-lg" style="width: 116px">   
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+<script type="text/javascript">
+
+
+    // function prev() {
+    //     location.replace("/formulaire/autre/{{ request.session.code_fac }}")
+    // }
+    $( document ).ready(function() {
+
+
+        function masquerShow(){
+            // Masquer certains champs si statut professionel == Sans emploi
+            if ($('#id_statutprofessionnel').val() == "SANS EMPLOI" || $('#id_statutprofessionnel').val() == "EN AUTO-EMPLOI" || $('#id_statutprofessionnel').val() == null) {
+                $('#div_id_profession').hide()
+                $('#div_id_lieudujob').hide()
+                $('#div_id_grade').hide()
+                $('#div_id_echelon').hide()
+            }
+
+            $("#id_statutprofessionnel").change(function () {
+
+                if ($(this).val() == "SALARIE(E)") {
+                    $('#div_id_profession').show()
+                    $('#div_id_lieudujob').show()
+                    $('#div_id_grade').show()
+                    $('#div_id_echelon').show()
+                }
+                else{
+                    $('#div_id_profession').hide()
+                    $('#div_id_lieudujob').hide()
+                    $('#div_id_grade').hide()
+                    $('#div_id_echelon').hide()
+                }
+
+            });
+        }
+
+
+        function loadfield(callback){
+            if(sessionStorage.getItem("codeUnique") != null && sessionStorage.getItem("codeUnique") != "" && sessionStorage.getItem("codeUnique") != undefined){
+                // Recharger les valeurs soumises dans les champs
+                $.ajax({
+                    //type: 'POST',
+                    url: '/formulaire/get_step_data/1/'+sessionStorage.getItem("codeUnique"),
+                    data: {
+                        //csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+                    },
+                    dataType: 'json',
+                    beforeSend: function() {
+                        //$('#ftco-loader').addClass('show');
+                    },
+                    success: function (data) {
+                        if (data['prenom'] != undefined && data['prenom'] != ""){
+                            document.diplome_form.prenom.value = data['prenom']  
+                        }
+                        // document.civilite_form.prenom.value = data['prenom'] == undefined ? "" : data['prenom']
+                        if (data['nom'] != undefined && data['nom'] != ""){
+                            document.diplome_form.nom.value = data['nom']  
+                        }
+                        // document.civilite_form.nom.value = data['nom'] == undefined ? "" : data['nom']
+                        if (data['sexe'] != undefined && data['sexe'] != ""){
+                            document.diplome_form.sexe.value = data['sexe']  
+                        }
+                        // document.civilite_form.sexe.value = data['sexe'] == undefined ? "" : data['sexe']
+                        if (data['datenaissance'] != undefined && data['datenaissance'] != ""){
+                            document.diplome_form.datenaissance.value = data['datenaissance']  
+                        }
+                        // document.civilite_form.datenaissance.value = data['datenaissance'] == undefined ? "" : data['datenaissance']
+                        if (data['dateprecise'] != undefined && data['dateprecise'] != ""){
+                            document.diplome_form.dateprecise.value = data['dateprecise']  
+                        }
+                        // document.civilite_form.dateprecise.value = data['dateprecise'] == undefined ? "" : data['dateprecise']
+                        if (data['lieunaissance'] != undefined && data['lieunaissance'] != ""){
+                            document.diplome_form.lieunaissance.value = data['lieunaissance']  
+                        }
+                        // document.civilite_form.lieunaissance.value = data['lieunaissance'] == undefined ? "" : data['lieunaissance']
+                        if (data['numerocni'] != undefined && data['numerocni'] != ""){
+                            document.diplome_form.numerocni.value = data['numerocni']  
+                        }
+                        // document.civilite_form.numerocni.value = data['numerocni'] == undefined ? "" : data['numerocni']
+                        if (data['adresse'] != undefined && data['adresse'] != ""){
+                            document.diplome_form.adresse.value = data['adresse']  
+                        }
+                        // document.civilite_form.adresse.value = data['adresse'] == undefined ? "" : data['adresse']
+                        if (data['telephone'] != undefined && data['telephone'] != ""){
+                            document.diplome_form.telephone.value = data['telephone']  
+                        }
+                        // document.civilite_form.telephone.value = data['telephone'] == undefined ? "" : data['telephone']
+                        
+                        document.civilite_form.email.value = data['email'] == undefined ? "" : data['email']
+                        document.civilite_form.statutmarital.value = data['statutmarital'] == undefined ? "" : data['statutmarital']
+                        document.civilite_form.premierelangue.value = data['premierelangue'] == undefined ? "" : data['premierelangue']
+                        document.civilite_form.statutprofessionnel.value = data['statutprofessionnel'] == undefined ? "" : data['statutprofessionnel']
+                        if (data['statutprofessionnel'] == "SALARIE(E)") {
+                            $('#div_id_profession').show()
+                            $('#div_id_lieudujob').show()
+                            $('#div_id_grade').show()
+                            $('#div_id_echelon').show()
+                        }
+                        document.civilite_form.profession.value = data['profession'] == undefined ? "" : data['profession']
+                        document.civilite_form.lieudujob.value = data['lieudujob'] == undefined ? "" : data['lieudujob']
+                        document.civilite_form.grade.value = data['grade'] == undefined ? "" : data['grade']
+                        document.civilite_form.echelon.value = data['echelon'] == undefined ? "" : data['echelon']
+
+                    },
+                    error: function (data) {
+                        //$('#ftco-loader').removeClass('show');
+                        //alert("Erreur AJAX");                                                                                                                          
+                    }
+                })
+            }
+        }
+
+        $.when( loadfield() ).done(function() {
+            setTimeout(function(){
+
+                masquerShow();
+            },100);
+            
+        });
+    });
+
+
+    $( document ).on('submit', '#civilite_form', function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '/formulaire/step_1/',
+            data: {
+                prenom: $('#id_prenom').val(),
+                nom: $('#id_nom').val(),
+                datenaissance: $('#id_datenaissance').val(),
+                dateprecise: document.civilite_form.dateprecise.value,
+                lieunaissance: $('#id_lieunaissance').val(),
+                numerocni: $('#id_numerocni').val(),
+                sexe: $('#id_sexe').val(),
+                adresse: $('#id_adresse').val(),
+                telephone: $('#id_telephone').val(),
+                email: $('#id_email').val(),
+                statutmarital: $('#id_statutmarital').val(),
+                premierelangue: $('#id_premierelangue').val(),
+                statutprofessionnel: $('#id_statutprofessionnel').val(),
+                profession: $('#id_profession').val(),
+                lieudujob: $('#id_lieudujob').val(),
+                grade: $('#id_grade').val(),
+                echelon: $('#id_echelon').val(),
+
+                csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+            },
+            beforeSend: function() {
+                $('#ftco-loader').addClass('show');
+            },
+            success: function (data) {
+                //$('#ftco-loader').removeClass('show');
+                sessionStorage.codeUnique = data['code']
+                window.location.href = "/formulaire/autre/" // Le rediriger vers le step 2
+                // Penser a sauver les donnees dans la session
+                // Penser à vérifier que tous les champs sont remplis avant d'envoyer les données
+            },
+            error: function (data) {
+                $('#ftco-loader').removeClass('show');
+                //alert("Erreur AJAX");                                                                                                                          
+            }
+        })
+
+    });
+
+</script>
+{% endblock content %}

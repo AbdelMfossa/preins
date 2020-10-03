@@ -1,0 +1,119 @@
+{% extends 'logement/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block title %}
+    <title>{% trans "UY1 - Demande d'attribution de chambre à la Cité Universitaire" %}</title>
+{% endblock title %}
+
+{% block content %}
+    {% with titre="logement_sport"%}
+        {% include 'logement/logement_menuetape.html' %}
+    {% endwith %}
+<div class="col-md-6">
+    <h3>{% trans "Demande de logement à la cité Universitaire" %}</h3>
+    <form id='sport_form' name='sport_form' action="" method="post" class='f1'>
+        {% csrf_token %}
+        
+        {{ logement_sport_form| crispy }}
+        
+        <input type="button" onclick="prev()" name ="bouton_faculte_prev" value="Précédent" class="btn btn-charte btn-lg" style="width: 116px">
+        <input type="submit" value="Terminer" class="btn btn-charte btn-lg" style="width: 116px">   
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+<script type="text/javascript">
+
+    function prev() {
+        window.location.href = "/logement/logement_faculte/"
+    }
+
+    $( document ).ready(function() {
+
+        // Recharger les valeurs soumises dans les champs
+        if(sessionStorage.getItem("LogCodeUnique") != null && sessionStorage.getItem("LogCodeUnique") != "" && sessionStorage.getItem("LogCodeUnique") != undefined){
+            $.ajax({
+                //type: 'POST',
+                url: '/logement/get_step_data/4/'+sessionStorage.getItem("LogCodeUnique"),
+                data: {
+                    //csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+                },
+                dataType: 'json',
+                beforeSend: function() {
+                    //$('#ftco-loader').addClass('show');
+                },
+                success: function (data) {
+                    document.sport_form.autresport.value = data['sports'] == undefined ? "" : data['sports']
+                    document.sport_form.autreart.value = data['arts'] == undefined ? "" : data['arts']
+                    
+                    
+                },
+                error: function (data) {
+                    //$('#ftco-loader').removeClass('show');
+                    //alert("Erreur AJAX");                                                                                                                          
+                }
+            })
+        }
+    });
+
+    $( document ).on('submit', '#sport_form', function(e) {
+        e.preventDefault();
+
+            var sports = []
+            var arts = []
+            
+            for (let i = 1; i <= 12; i++) {
+                current = $('#id_sport_'+i)
+                if (current.is(":checked")){
+                    sports.push(current.val())
+                }
+                
+            }
+            sports.push($('#id_autresport').val())
+
+            for (let i = 1; i <= 11; i++) {
+                current = $('#id_art_'+i)
+                if (current.is(":checked")){
+                    arts.push(current.val())
+                }
+                
+            }
+            arts.push($('#id_autreart').val())
+
+            $.ajax({
+                type: 'POST',
+                url: '/logement/step_4/',
+                data: {
+                    sports: sports.join(),
+                    arts: arts.join(),
+                    
+
+                    csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+                },
+                beforeSend: function() {
+                    $('#ftco-loader').addClass('show');
+                },
+                success: function (data) {
+                    //$('#ftco-loader').removeClass('show');
+                    // alert("ok") 
+                    location.replace("/logement/logement_fiche/"+data['code']+"/")
+                    // window.location.href = "/logement/logement_fiche/"+data['code']+"/" // Le rediriger vers sa fiche
+                    //alert("ok")
+                    sessionStorage.removeItem('LogCodeUnique');//supprimer le LogCodeUnique en session Javascript
+                    //Penser a sauver les donnees dans la session                                                                                                            
+                },
+                error: function (data) {
+                    $('#ftco-loader').removeClass('show');
+                    // alert("Erreur AJAX");
+                    alert("Erreur au niveau du serveur \n Recommencez");                                                                                                                       
+                }
+            })
+
+    });
+
+</script>
+{% endblock content %}
+
+{% block aide %}
+    {% include 'logement/logement_menuaide.html' %}
+{% endblock %}

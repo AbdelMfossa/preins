@@ -1,0 +1,134 @@
+{% extends 'ecoledoctorale/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block content %}
+    {% with titre="sport"%}
+        {% include 'ecoledoctorale/menuetape.html' %}
+    {% endwith %}
+<div class="col-md-6">
+    <h3>{% trans 'Préinscription en' %} {{ request.session.ecole }}</h3>
+    <h6>{% trans 'Tous les champs marqués d\'un' %} <span style="color:red; margin-top:3px;">*</span> {% trans 'sont obligatoires.' %}</h6>
+    <form id='sport_form' action="" method="post" class='f1' name='sport_form'>
+        {% csrf_token %}
+        
+        {{ sport_form| crispy }}
+
+        <input type="bouton" onclick="prev()" name = "bouton_sport_prev" value="Précédent" class="btn btn-charte btn-lg" style="width: 116px">
+        <input type="submit" name = "bouton_sport" value="Terminer" class="btn btn-charte btn-lg" style="width: 116px">   
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+<script type="text/javascript">
+
+    function prev() {
+        window.location.href = "/ecoledoctorale/diplome/"
+    }
+
+    $( document ).ready(function() {
+
+
+        // if ($('#id_sport_1').is(":checked")){
+        //     $('#id_sport_2').hide()
+        //     $('#id_sport_3').hide()
+        //     $('#id_sport_4').hide()
+        //     $('#id_sport_5').hide()
+        // }
+        // else{
+        //     $('#id_sport_2').show()
+        //     $('#id_sport_3').show()
+        //     $('#id_sport_4').show()
+        //     $('#id_sport_5').show()
+        // }
+
+
+    // Recharger les valeurs soumises dans les champs
+        $.ajax({
+            //type: 'POST',
+            url: '/ecoledoctorale/get_step_data/5/'+sessionStorage.getItem("codeUnique"),
+            data: {
+                //csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+            },
+            dataType: 'json',
+            beforeSend: function() {
+                //$('#ftco-loader').addClass('show');
+            },
+            success: function (data) {
+                document.sport_form.autresport.value = data['sports'] == undefined ? "" : data['sports']
+                document.sport_form.handicap.value = data['handicap'] == undefined ? "" : data['handicap']
+                document.sport_form.numcertifmedical.value = data['numcertifmedical'] == undefined ? "" : data['numcertifmedical']
+                document.sport_form.etabcertifmedical.value = data['etabcertifmedical'] == undefined ? "" : data['etabcertifmedical']
+                
+                
+            },
+            error: function (data) {
+                //$('#ftco-loader').removeClass('show');
+                //alert("Erreur AJAX");                                                                                                                          
+            }
+        })
+    });
+
+    $( document ).on('submit', '#sport_form', function(e) {
+        e.preventDefault();
+
+        if (document.sport_form.handicap.value != "") {
+            var sports = []
+            var arts = []
+            
+            for (let i = 1; i <= 12; i++) {
+                current = $('#id_sport_'+i)
+                if (current.is(":checked")){
+                    sports.push(current.val())
+                }
+                
+            }
+            sports.push($('#id_autresport').val())
+
+            for (let i = 1; i <= 11; i++) {
+                current = $('#id_art_'+i)
+                if (current.is(":checked")){
+                    arts.push(current.val())
+                }
+                
+            }
+            arts.push($('#id_autreart').val())
+
+            $.ajax({
+                type: 'POST',
+                url: '/ecoledoctorale/step_5/',
+                data: {
+                    sports: sports.join(),
+                    arts: arts.join(),
+                    handicap: document.sport_form.handicap.value,
+                    numcertifmedical: document.sport_form.numcertifmedical.value,
+                    etabcertifmedical: document.sport_form.etabcertifmedical.value,
+
+                    csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+                },
+                beforeSend: function() {
+                    $('#ftco-loader').addClass('show');
+                },
+                success: function (data) {
+                    //$('#ftco-loader').removeClass('show');
+                    // alert("ok") 
+                    // window.location.href = "/ecoledoctorale/autre/" // Le rediriger vers le step 6
+                    location.replace("/ecoledoctorale/fiche/"+data['code']+"/")
+                    // window.location.href = "/ecoledoctorale/fiche/"+data['code']+"/" // Le rediriger vers sa fiche
+                    sessionStorage.removeItem('codeUnique');
+                    //Penser a sauver les donnees dans la session                                                                                                            
+                },
+                error: function (data) {
+                    $('#ftco-loader').removeClass('show');
+                    // alert("Erreur AJAX");
+                    alert("Erreur au niveau du serveur");                                                                                                                       
+                }
+            })
+        }
+        else{
+            alert("Veuillez choisir si vous avez un handicap ou pas...")
+        }
+
+    });
+
+</script>
+{% endblock content %}

@@ -1,0 +1,205 @@
+{% extends 'ecoledoctorale/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block content %}
+{% with titre="filiation"%}
+{% include 'ecoledoctorale/menuetape.html' %}
+{% endwith %}
+<div class="col-md-6">
+    <h3>{% trans 'Préinscription en' %} {{ request.session.ecole }}</h3>
+    <h6>{% trans 'Tous les champs marqués d\'un' %} <span style="color:red; margin-top:3px;">*</span> {% trans 'sont obligatoires.' %}</h6>
+    <!-- <form id='filiation_form' action="" method="post" class='f1' name='filiation_form'> -->
+    <form id='filiation_form' action="" method="post" class='f1' name='filiation_form'>
+        {% csrf_token %}
+
+        {{ filiation_form| crispy }}
+
+        <input type="button" onclick="prev()" name="bouton_filiation_prev" value="Précédent"
+               class="btn btn-charte btn-lg" style="width: 116px">
+        <input type="submit" name="bouton_filiation" value="Suivant" class="btn btn-charte btn-lg" style="width: 116px">
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+
+    function prev() {
+        window.location.href = "/ecoledoctorale/autre/"
+    }
+ 
+    $( document ).ready(function() {
+        $.when( loadd() ).done(function() {
+            setTimeout(function(){
+
+                reprise();
+            },50);
+            
+        });
+
+        function reprise(){
+            // Recharger les valeurs soumises dans les champs
+            $.ajax({
+                //type: 'POST',
+                url: '/ecoledoctorale/get_step_data/2/'+sessionStorage.getItem("codeUnique"),
+                data: {
+                    //csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+                },
+                dataType: 'json',
+                beforeSend: function() {
+                    //$('#ftco-loader').addClass('show');
+                },
+                success: function (data) {
+                    //alert('ok')
+                    document.filiation_form.nationalite.value = data['nationalite'] == undefined ? "" : data['nationalite']
+                    //document.filiation_form.regionorigine.value = data['regionorigine'] == undefined ? "" : data['regionorigine']
+                    $('#id_regionorigine').val(data['regionorigine']).trigger('change');
+                    setTimeout(function(){
+                        document.filiation_form.departementorigine.value = data['departementorigine'] == undefined ? "" : data['departementorigine']
+                    },5000);
+                    document.filiation_form.departementorigine.value = data['departementorigine'] == undefined ? "" : data['departementorigine']
+                    document.filiation_form.nompere.value = data['nompere'] == undefined ? "" : data['nompere']
+                    document.filiation_form.professionpere.value = data['professionpere'] == undefined ? "" : data['professionpere']
+                    document.filiation_form.nommere.value = data['nommere'] == undefined ? "" : data['nommere']
+                    document.filiation_form.professionmere.value = data['professionmere'] == undefined ? "" : data['professionmere']
+                    document.filiation_form.nomurgence.value = data['nomurgence'] == undefined ? "" : data['nomurgence']
+                    document.filiation_form.telurgence.value = data['telurgence'] == undefined ? "" : data['telurgence']
+                    document.filiation_form.villeurgence.value = data['villeurgence'] == undefined ? "" : data['villeurgence']
+                },
+                error: function (data) {
+                    //$('#ftco-loader').removeClass('show');
+                    //alert("Erreur AJAX");                                                                                                                          
+                }
+            })
+        }
+
+        function loadd(callback) {
+            loadDepart()
+        }
+
+
+
+        //loadDepart()
+    
+        $("#id_regionorigine").change(function () {
+            loadDepart()
+
+        });
+
+        $("#id_nationalite").change(function () {
+            if ($(this).val() != "1") {
+                document.getElementById("id_regionorigine").options.length = 0;
+                var $option = $("<option/>", {
+                    value: 11,
+                    text: "ETRANGER"
+                });
+                $('#id_regionorigine').append($option);
+
+                document.getElementById("id_departementorigine").options.length = 0;
+                var $option = $("<option/>", {
+                    value: 59,
+                    text: "ETRANGER"
+                });
+                $('#id_departementorigine').append($option);
+            }
+            else{
+                var selectValues = { 
+                    "2": "ADAMAOUA",
+                    "1": "CENTRE",
+                    "3": "EST",
+                    "4": "EXTREME-NORD",
+                    "5": "LITTORAL",
+                    "8": "OUEST",
+                    "6": "NORD",
+                    "7": "NORD-OUEST",
+                    "9": "SUD",
+                    "10": "SUD-OUEST"
+                };
+                document.getElementById("id_regionorigine").options.length = 0;
+                $.each(selectValues, function(key, value) {
+                    var $option = $("<option/>", {
+                        value: key,
+                        text: value
+                    });
+                    $('#id_regionorigine').append($option);
+                    loadDepart()
+                });
+            }
+
+        });
+
+        function loadDepart() {
+            var regionID = $("#id_regionorigine").val();
+            $.ajax({ 
+                url: "{% url 'falshfsfse:get_departments' %}",
+                type: "POST",
+                data: {
+                  'region_id': regionID,
+                  'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val()
+                },
+                dataType: 'json',
+                success: function (data, status) {
+                  // var selectValues = { // Utiliser les bonnes donnees des que dispo
+                  //     "1": "test 1",
+                  //     "2": "test 2"
+                  //   };
+                    var $departement = $('#id_departementorigine');
+                    // var select = $("<select>");
+                    document.getElementById("id_departementorigine").options.length = 0;
+                    $.each(data['data'], function(key, value) {
+                       // select.append( $('<option></option>').val(value.id).html(value.name) );
+                        var $option = $("<option>", {
+                            value: value.id,
+                            text: value.name
+                        });
+                        $departement.append($option);
+                    });
+                    // $departement.append(select.html());
+                },
+                error: function (data) {
+                    //alert("Erreur AJAX");                                                                                                                           
+                }
+            });
+        }
+
+    });
+
+    $( document ).on('submit', '#filiation_form', function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '/ecoledoctorale/step_2/',
+            data: {
+                nationalite: $('#id_nationalite').val(),
+                regionorigine: $('#id_regionorigine').val(),
+                departementorigine: $('#id_departementorigine').val(),
+                nompere: $('#id_nompere').val(),
+                professionpere: $('#id_professionpere').val(),
+                nommere: $('#id_nommere').val(),
+                professionmere: $('#id_professionmere').val(),
+                nomurgence: $('#id_nomurgence').val(),
+                telurgence: $('#id_telurgence').val(),
+                villeurgence: $('#id_villeurgence').val(),
+                
+
+                csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+            },
+            beforeSend: function() {
+                $('#ftco-loader').addClass('show');
+            },
+            success: function (data) {
+                // $('#ftco-loader').removeClass('show');
+                //alert("ok") 
+                window.location.href = "/ecoledoctorale/ecole/" // Le rediriger vers le step 3
+                //Penser a sauver les donnees dans la session                                                                                                            
+            },
+            error: function (data) {
+                $('#ftco-loader').removeClass('show');
+                //alert("Erreur AJAX");                                                                                                                          
+            }
+        })
+
+    });
+
+
+</script>
+{% endblock content %}

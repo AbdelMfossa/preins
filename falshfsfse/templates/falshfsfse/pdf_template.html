@@ -1,0 +1,397 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Fiche de préinscription</title>
+		<style type="text/css">
+			@page {
+				size: "A4";
+				margin: 1cm 1cm 1cm 1cm;
+				box-sizing: border-box;
+			}
+			
+			body{font-size: 8px; font-family: Arial, sans-serif;}
+			
+			.title {
+				margin-top: -75px;
+				/*padding-bottom: -75px;*/
+			}
+
+			.title1 {
+				font-weight: bold;
+				text-align: center;
+				font-size: 9px !important;
+			}
+		
+			#tete{
+				text-align: center;
+				margin-top: -15px;
+			}
+
+			table{
+				margin-bottom: 10px;
+			}
+
+			table th{
+				text-align: left;
+				border-bottom: 0.5px solid black;
+			}
+
+			.photo{
+				border: 0.5px solid black;
+				width: 100.64px;
+				height: 100.64px;
+				text-align: right;
+			}
+					
+			
+			
+		</style>
+	</head>
+
+	<body>
+		
+		<table id="tete">
+			<tr>
+				<td>République du Cameroun<br> Paix-Travail-Patrie <br> -------------- <br> Ministère de l'Enseignement Supérieur <br> -------------- <br> Université de Yaoundé I (UYI) <br> --------------</td>
+				<td style="font-size:12px;">{% include 'falshfsfse/logo.html' %}</td>
+				<td>Republic of Cameroon <br> Peace-Work-Fatherland <br> -------------- <br> Ministry of Higher Education <br> -------------- <br> The University of Yaounde I (UYI) <br> --------------</td>
+			</tr>
+		</table>
+
+		<table >
+			<tr>
+				<td width="15%">&nbsp;</td>
+				<td width="70%" class="title1">FICHE DE PREINSCRIPTION A L'UNIVERSITE DE YAOUNDE I <br> ANNEE ACADEMIQUE 2020 / 2021</td>
+				<td width="15%">
+					<table><tr><td class="photo">&nbsp;</td></tr></table>
+				</td>
+			</tr>
+		</table>
+
+		<!-- <div class="title">
+            FICHE DE PREINSCRIPTION A L'UNIVERSITE DE YAOUNDE I <br> ANNEE ACADEMIQUE 2020 / 2021
+        </div> -->
+
+        <br>
+		<table class="title">
+			<tr>
+				<td style="vertical-align: top;">
+					<table>
+						<tr>
+							<th>Etat-Civil</th>
+							<th></th>
+						</tr>
+						<tr style="padding-top: 2px;">
+							<td width="33%">Code préinscription :</td>
+							<td><b>{{dossier.num_ordre}}<b></td>
+						</tr>
+						<tr>
+							<td>Nom(s) et Prénom(s) :</td>
+							<td>{{dossier.nom|upper}} {{dossier.prenom|upper}}</td>
+						</tr>
+						<tr>
+							<td>Date de Naissance :</td>
+							<td>{{dossier.date_nais|date:"d/m/Y"}}</td>
+						</tr>
+						<tr>
+							<td>Date précise? :</td>
+							<td>{% if dossier.dateprecise %}OUI{% else %}NON{% endif %}</td>
+						</tr>
+						<tr>
+							<td>Lieu de Naissance :</td>
+							<td>{{dossier.lieu_nais|upper}}</td>
+						</tr>
+						<tr>
+							<td>Sexe :</td>
+							<td>{{dossier.sexe|upper}}</td>
+						</tr>
+						<tr>
+							<td>Statut matrimonial :</td>
+							<td>{{dossier.stat_matri|upper}}</td>
+						</tr>
+						<tr>
+							<td>Situation professionnelle :</td>
+							<td>{{ dossier.sit_prof }}</td>
+						</tr>
+						<tr>
+							<td>Langue parlée :</td>
+							<td>{{dossier.langue|upper}}</td>
+						</tr>
+						<tr>
+							<td>Email :</td>
+							<td>{{dossier.email}}</td>
+						</tr>
+						<tr>
+							<td>Téléphone :</td>
+							<td>{{dossier.tel}}</td>
+						</tr>
+						<tr>
+							<td>N° CNI</td>
+							<td>{{dossier.num_cni}}</td>
+						</tr>
+						<tr>
+							<td>Adresse</td>
+							<td>{{dossier.adresse_perso}}</td>
+						</tr>
+						<tr>
+							<td><u>Date de rendez-vous</u></td>
+							<td>du <u>12/10/2020</u> au <u>14/10/2020</u></td>
+						</tr>
+					</table>
+
+					<table>
+						<tr>
+							<th>Filiation et infos. Urgence</th>
+							<th></th>
+						</tr>
+						<tr style="padding-top: 2px;">
+							<td width="33%">Nationalité :</td>
+							<td>{{dossier.nationality|upper}}</td>
+						</tr>
+						<tr>
+							<td>Région d'Origine :</td>
+							<td>{{dossier.region_origine}}</td>
+						</tr>
+						<tr>
+							<td>Département d'Origine :</td>
+							<td>{{dossier.dept_origine|upper}}</td>
+						</tr>
+						<tr>
+							<td>Nom du Père :</td>
+							<td>{{dossier.nom_pere|upper}}</td>
+						</tr>
+						<tr>
+							<td>Profession du Père :</td>
+							<td>{{dossier.profession_pere|upper}}</td>
+						</tr>
+						<tr>
+							<td>Nom de la Mère :</td>
+							<td>{{dossier.nom_mere|upper}}</td>
+						</tr>
+						<tr>
+							<td>Profession de la Mère :</td>
+							<td>{{dossier.profession_mere|upper}}</td>
+						</tr>
+					</table>
+
+					<p style="padding-top: -5px; padding-bottom: 0"><u><b>Personne à contacter :</b></u></p>
+					<Table>
+						<tr>
+							<td width="33%">* Nom :</td>
+							<td>{{dossier.nom_urgence|upper}}</td>
+						</tr>
+						<tr>
+							<td>* Téléphone :</td>
+							<td>{{dossier.tel_urgence}}</td>
+						</tr>
+						<tr>
+							<td>* Ville :</td>
+							<td>{{dossier.ville_urgence|upper}}</td>
+						</tr>
+					</Table>
+
+					<br><center><u><b>Partie réservée à l'Administration :</b></u><br><br>
+					<b>Avis :</b><br>
+					<b>Signature</b></center>
+
+				</td>
+
+				<td style="width: 20px;"></td>
+
+				<td style="vertical-align: top;">					
+					<Table>
+						<tr>
+							<th>Faculté et Filières</th>
+							<th></th>
+						</tr>
+						<tr>
+							<td colspan="2"><p style="padding-top: 5px"><u><b>Filières :</b></u></p></td>
+						</tr>
+						
+						<tr style="padding-top: 2px;">
+							<td width="33%">Etablissement :</td>
+							<td>{{dossier.institution|upper}}</td>
+						</tr>
+						<tr>
+							<td>* 1er Choix :</td>
+							<td>{{dossier.fil1}}</td>
+						</tr>
+						<tr>
+							<td>* 2ème Choix :</td>
+							<td>{{dossier.fil2}}</td>
+						</tr>
+						<tr>
+							<td>* 3ème Choix :</td>
+							<td>{{dossier.fil3}}</td>
+						</tr>
+						<tr>
+							<td>Niveau :</td>
+							<td>{{dossier.niv_acad}}</td>
+						</tr>
+						<tr>
+							<td>Code d'orientation :</td>
+							<td>{{dossier.code_questionnaire|upper}}</td>
+						</tr>
+						<tr>
+							<td>Statut</td>
+							<td>{{dossier.nature_candidat|upper}}</td>
+						</tr>
+					</Table>
+
+					<table>
+						<tr>
+							<th>Diplôme</th>
+							<th></th>
+						</tr>
+						<tr style="padding-top: 2px;">
+							<td width="33%">Type Diplôme :</td>
+							<td>{{dossier.type_diplome|upper}}</td>
+						</tr>
+						{% if dossier.type_diplome|upper != 'GCE A LEVEL' %}
+							<tr>
+								<td>Série :</td>
+								<td>{{dossier.serie}}</td>
+							</tr>
+						{% endif %}
+						<tr>
+							<td>Année d'obtention :</td>
+							<td>{{dossier.annee_obtention}}</td>
+						</tr>
+						<tr>
+							<td>Moyenne :</td>
+							{% if dossier.type_diplome|upper == 'GCE A LEVEL' %}
+								<td>
+									{{dossier.paper_1}}:{{dossier.paper1_grade}};
+                                    {{dossier.paper_2}}:{{dossier.paper2_grade}};
+                                    {{dossier.paper_3}}:{{dossier.paper3_grade}};
+								</td>
+							{% else %}
+								<td>{{dossier.moyenne}}</td>
+							{% endif %}
+						</tr>
+						<tr>
+							<td>Infos. Jury/Mention :</td>
+							<td>{{dossier.mention}}</td>
+						</tr>
+						<tr>
+							<td>Diplôme délivré par :</td>
+							<td>{{dossier.dipl_etabl|upper}}</td>
+						</tr>
+						<tr>
+							<td>Date de délivrance :</td>
+							<td>{{dossier.dipl_date_deli|date:"d/m/Y"}}</td>
+						</tr>
+					</table>
+
+					<Table>
+						<tr>
+							<th>Autres Détails</th>
+							<th></th>
+						</tr>
+						<tr>
+							<td colspan="2"><p style="padding-top: 5px"><u><b>Infos de Paiement :</b></u></p></td>
+						</tr>
+						<tr>
+							<td width="33%">* N° Transaction :</td>
+							<td>{{dossier.transaction_number}}</td>
+						</tr>
+						<tr>
+							<td>* Agence de Paiement :</td>
+							<td>{{dossier.agence_paiement}}</td>
+						</tr>
+						<tr>
+							<td>* Frais de préinscriiption :</td>
+							<td>10 000</td>
+						</tr>
+					</Table>
+
+					<p><u><b>Iinformations Diverses :</b></u></p>
+					<Table>
+						<tr>
+							<td width="33%">* Pratique Sport :</td>
+							<td>{% if dossier.list_sports %}OUI{% else %}NON{% endif %}</td>
+						</tr>
+						<tr>
+							<td width="33%">* Pratique Art :</td>
+							<td>{% if dossier.list_arts %}OUI{% else %}NON{% endif %}</td>
+						</tr>
+						<tr>
+							<td>Numéro du certificat médical :</td>
+							<td>{{dossier.num_certifmedical}}</td>
+						</tr>
+						<tr>
+							<td>Lieu du certificat médical :</td>
+							<td>{{dossier.lieu_certifmedical}}</td>
+						</tr>
+					</Table>
+					<br><br>
+					<p><i>Je déclare sur l'honneur que les informations saisies sont exactes</i></p>
+				</td>
+			</tr>
+		</table><br>
+		<!-- <hr class="coupe"> -->
+		<p>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ </p>
+		<br>
+		
+		<p style="text-align:center; font-size: 10px;font-weight: 500; ">RECEPISSE DE DEPÔT</p>
+
+
+		<table>
+			<tr>
+				<td style="vertical-align: top;">
+					<table>
+						<tr>
+							<td width="33%">Code :</td>
+							<td><b>{{dossier.num_ordre}}<b></td>
+						</tr>
+						<tr>
+							<td>Filière :</td>
+							<td>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</td>
+						</tr>
+						<tr>
+							<td>Etablissement :</td>
+							<td>{{dossier.institution|upper}}</td>
+						</tr>
+					</table>
+					<p><u><b>Infos de Paiement :</b></u></p>
+							<Table>
+								<tr>
+									<td width="33%">* N° Transaction :</td>
+									<td>{{dossier.transaction_number}}</td>
+								</tr>
+								<tr>
+									<td>* Agence de Paiement :</td>
+									<td>{{dossier.agence_paiement}}</td>
+								</tr>
+							</Table>
+				</td>
+
+				<td style="width: 20px;"></td>
+					
+				<td style="vertical-align: top;">
+					<table>
+						<tr>
+							<td width="33%">Nom(s) et Prénom(s) :</td>
+							<td>{{dossier.nom|upper}} {{dossier.prenom|upper}}</td>
+						</tr>
+						<tr>
+							<td>Niveau :</td>
+							<td>{{dossier.niv_acad}}</td>
+						</tr>
+					</table>
+					<br>
+					<center>
+						Avis :</br>
+						Signature
+					</center>
+				</td>
+			</tr>
+		</table>
+
+	</body>
+</html>

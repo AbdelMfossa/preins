@@ -1,0 +1,164 @@
+{% extends 'ecoledoctorale/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block content %}
+    {% with titre="école"%}
+        {% include 'ecoledoctorale/menuetape.html' %}
+    {% endwith %}
+<div class="col-md-6">
+    <h3>{% trans 'Préinscription en' %} <span id="ec">{{ request.session.ecole }}</span></h3>
+    <form id='ecole_form' name='ecole_form' action="" method="post" class='f1'>
+        {% csrf_token %}
+        
+        {{ ecole_form| crispy }}
+
+        <input type="button" onclick="prev()" name ="bouton_ecole_prev" value="Précédent" class="btn btn-charte btn-lg" style="width: 116px">
+        <input type="submit" name = "bouton_ecole" value="Suivant" class="btn btn-charte btn-lg" style="width: 116px">   
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+<script type="text/javascript">
+
+    function prev() {
+        window.location.href = "/ecoledoctorale/ecole/"
+    }
+
+    $( document ).ready(function() {
+        
+        // Recharger les valeurs soumises dans les champs
+        
+        $.when( loadfield() ).done(function() {
+            setTimeout(function(){
+
+                reprise();
+            },100); // 1/10 secondes
+                
+        });
+        document.getElementById('id_ecoledoc').value = $('#ec').text(),
+
+        school = '{{ request.session.ecole }}';
+        
+        function reprise(){ // Recharger les valeurs soumises dans les champs
+        
+            $.ajax({
+                //type: 'POST',
+                url: '/ecoledoctorale/get_step_data/4/'+sessionStorage.getItem("codeUnique"),
+                data: {
+                    //csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+                },
+                dataType: 'json',
+                beforeSend: function() {
+                    //$('#ftco-loader').addClass('show');
+                },
+                success: function (data) {
+                    //alert('ok')
+                    document.ecole_form.matricule_ext.value = data['matricule_ext'] == undefined ? "" : data['matricule_ext']
+                    // document.ecole_form.ecoledoc.value = data['ecoledoc'] == undefined ? "" : data['ecoledoc']
+                    document.ecole_form.uniterecherche.value = data['uniterecherche'] == undefined ? "" : data['uniterecherche']
+                    document.ecole_form.disponibilite.value = data['disponibilite'] == undefined ? "" : data['disponibilite']
+                    document.ecole_form.formationinitiale.value = data['formationinitiale'] == undefined ? "" : data['formationinitiale']
+                    document.ecole_form.naturelicence.value = data['naturelicence'] == undefined ? "" : data['naturelicence']
+                    document.ecole_form.optionlicence.value = data['optionlicence'] == undefined ? "" : data['optionlicence']
+                    document.ecole_form.anneelicence.value = data['anneelicence'] == undefined ? "" : data['anneelicence']
+                    document.ecole_form.naturemasterun.value = data['naturemasterun'] == undefined ? "" : data['naturemasterun']
+                    document.ecole_form.specialitemasterun.value = data['specialitemasterun'] == undefined ? "" : data['specialitemasterun']
+                    document.ecole_form.etablissementmasterun.value = data['etablissementmasterun'] == undefined ? "" : data['etablissementmasterun']
+                    document.ecole_form.departementmasterun.value = data['departementmasterun'] == undefined ? "" : data['departementmasterun']
+                    document.ecole_form.anneemasterun.value = data['anneemasterun'] == undefined ? "" : data['anneemasterun']
+                    document.ecole_form.sourcefinancement.value = data['sourcefinancement'] == undefined ? "" : data['sourcefinancement']
+                    document.ecole_form.motivationthese.value = data['motivationthese'] == undefined ? "" : data['motivationthese']
+                    document.ecole_form.resumethese.value = data['resumethese'] == undefined ? "" : data['resumethese']
+                },
+                error: function (data) {
+                    //$('#ftco-loader').removeClass('show');
+                    //alert("Erreur AJAX");                                                                                                                          
+                }
+            })
+        }
+    });
+
+    function loadfield(callback){
+            $.ajax({
+                url: "{% url 'falshfsfse:get_fields' %}",
+                type: "POST",
+                data: {
+                    'school_id': '{{ request.session.code_ecole }}',
+                    'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val()
+                },
+                dataType: 'json',
+                success: function (data, status) {
+                    
+                    var $mySelect1 = $('#id_uniterecherche');
+                    //
+                    $.each(data['data'], function(key, value) {
+                      var $option = $("<option/>", {
+                        value: value.name,
+                        text: value.name
+                      });
+                      $mySelect1.append($option);
+                    });
+                },
+                error: function (data) {
+                    //alert(data.status);                                                                                                                          
+                }
+            });
+            return true;
+    }
+
+    
+
+        
+
+
+    $( document ).on('submit', '#ecole_form', function(e) {
+            e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '/ecoledoctorale/step_4/',
+            data: {
+                matricule_ext: $('#id_matricule_ext').val(),
+                ecoledoc: '{{ request.session.ecole }}',
+                // codeecole: '{{ request.session.code_ecole }}',
+                uniterecherche: $('#id_uniterecherche').val(),
+                // codefil: 100,
+                disponibilite: $('#id_disponibilite').val(),
+                formationinitiale: $('#id_formationinitiale').val(),
+                naturelicence: $('#id_naturelicence').val(),
+                optionlicence: $('#id_optionlicence').val(),
+                anneelicence: $('#id_anneelicence').val(),
+                naturemasterun: $('#id_naturemasterun').val(),
+                specialitemasterun: $('#id_specialitemasterun').val(),
+                etablissementmasterun: $('#id_etablissementmasterun').val(),
+                departementmasterun: $('#id_departementmasterun').val(),
+                anneemasterun: $('#id_anneemasterun').val(),
+                sourcefinancement: $('#id_sourcefinancement').val(),
+                motivationthese: $('#id_motivationthese').val(),
+                resumethese: $('#id_resumethese').val(),
+
+                cycle: $('#id_cycle').val(),
+                encadreur1: $('#id_encadreur1').val(),
+                encadreur2: $('#id_encadreur2').val(),
+                
+
+                csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+            },
+            beforeSend: function() {
+                $('#ftco-loader').addClass('show');
+            },
+            success: function (data) {
+                // $('#ftco-loader').removeClass('show');
+                // alert("ok") 
+                window.location.href = "/ecoledoctorale/sport/" // Le rediriger vers le step 5
+                //Penser a sauver les donnees dans la session                                                                                                            
+            },
+            error: function (data) {
+                // $('#ftco-loader').removeClass('show');
+                // alert("Erreur AJAX");                                                                                                                          
+            }
+        })
+
+    });
+
+</script>
+{% endblock content %}

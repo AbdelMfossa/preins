@@ -1,0 +1,186 @@
+{% extends 'logement/base.html' %}
+{% load i18n %}
+
+{% block title %}
+    <title>{% trans "UY1 - Suivre ma demande d'attribution de chambre" %}</title>
+{% endblock title %}
+
+{% block content %}
+<div class="col-md-12">
+    <div id="actions" class="col-sm-12 text-center">
+	  Actions :
+		<!-- <a id="" href="">{% trans "Modifier ses informations" %}</a>&nbsp; | 
+		<a id="" href="">{% trans "Recevoir le dossier" %}</a>&nbsp; | -->
+	    <a href="{% url 'logement:logement_pdf_view' dossier.num_ordre %}" target="_blank">{% trans "Visualiser sa fiche" %}</a> |
+	    <a href="{% url 'logement:logement_pdf_download' dossier.num_ordre %}" target="_blank">{% trans "Telecharger sa fiche" %}</a>
+	</div><br><br>
+    <div>
+        <h3 style="">{% trans "Demande de chambre à la Cité Universitaire de l'UY1 sous le code :" %} <span style="color:green">{{dossier.num_ordre}}</span></h3>
+        <h3 style="">{% trans "N° d'ordre :" %} <span style="color:green">{{dossier.pk}}</span></h3>
+    </div>
+
+    <div class="">        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{% trans "Etat-Civil du candidat" %}</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-responsive-sm">
+                        <tr>
+                            <th>Noms et prénoms</th>
+                            <th>Date et lieu de naissance</th>
+                            <th>Sexe</th>
+                            <th>Nom de la Cité</th>
+                            <th>Handicap</th>
+                        </tr>
+                        <tr>
+                            <td>{{dossier.nom|upper}} {{dossier.prenom|upper}}</td>
+                            <td>{{dossier.date_nais|date:"d/m/Y"}} à {{dossier.lieu_nais|upper}}</td>
+                            <td>{{dossier.sexe|upper}}</td>
+                            <td>{{dossier.cite}}</td>
+                            <td>{% if dossier.handicap %}OUI{% else %}NON{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Résidence actuelle</th>
+                            <th>E-mail</th>
+                            <th>Téléphone</th>
+                            <th>Nationalité</th>
+                            <th>Région d'origine</th>
+                            <th>Département d'origine</th>
+                            <th>Nombre d'enfants</th>
+                        </tr>
+                        <tr>
+                            <td>{{dossier.residence_actuelle|upper}}</td>
+                            <td>{{dossier.email}}</td>
+                            <td>{{dossier.tel}}</td>
+                            <td>{{dossier.nationality|upper}}</td>
+                            <td>{{dossier.region_origine|upper}}</td>
+                            <td>{{dossier.dept_origine|upper}}</td>
+                            <td>/</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">CURSUS SCOLAIRE</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>Etablissement</th>
+                            <th>N° matricule</th>
+                            <th>Niveau d'études</th>
+                            <th>Filière</th>
+                            <th>Niveau/classe reprise</th>
+                            <th>Avez_vous habité la Cité-U ?</th>
+                            <th>La 1ère année</th>
+                            <th>La dernière année</th>
+                        </tr>
+                        <tr>
+                            <td>{{dossier.institution|upper}}</td>
+                            <td>{{dossier.nmat|upper}}</td>
+                            <td>{{dossier.niveau}}</td>
+                            <td>{{dossier.filiere|upper}}</td>
+                            <td>{{dossier.niveau_redouble}}</td>
+                            <td>{% if dossier.ancien_resident %}OUI{% else %}NON{% endif %}</td>
+                            <td>{% if dossier.ancien_resident %}{{dossier.premiere_annee_resi}}{% endif %} &nbsp;</td>
+                            <td>{% if dossier.ancien_resident %}{{dossier.derniere_annee_resi}}{% endif %} &nbsp;</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">AUTRES RENSEIGNEMENTS</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>Nom du père</th>
+                            <th>Profession du père</th>
+                            <th>Nom de la mère</th>
+                            <th>Profession de la mère</th>
+                            <th>Adresse des parents</th>
+                            <th>Correspondant à Yaoundé</th>
+                            <th>Téléphone</th>
+                            <th>Ville/Adresse</th>
+                        </tr>
+                        <tr>
+                            <td>{{dossier.nom_pere|upper}}</td>
+                            <td>{{dossier.profession_pere|upper}}</td>
+                            <td>{{dossier.nom_mere|upper}}</td>
+                            <td>{{dossier.profession_mere|upper}}</td>
+                            <td>{{dossier.adresse_parent|upper}}</td>
+                            <td>{{dossier.nom_urgence|upper}}</td>
+                            <td>{{dossier.tel_urgence|upper}}</td>
+                            <td>{{dossier.adresse_urgence|upper}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">SPORTS ET ARTS</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>Pratiquez-vous un sport ?</th>
+                            <th>Pratiquez-vous un art ?</th>
+                        </tr>
+                        <tr>
+                            <td>{% if dossier.list_sports %}OUI{% else %}NON{% endif %}</td>
+                            <td>{% if dossier.list_arts %}OUI{% else %}NON{% endif %}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Je déclare sur l'honneur que les informations saisies sont exactes.</div>
+            <div class="panel-body">
+                CONFIRMEE
+            </div>
+        </div>
+
+    </div>
+</div>
+        <!-- <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="#tab1" data-toggle="tab">Home</a></li>
+            <li role="presentation"><a href="#tab2" data-toggle="tab">Profile</a></li>
+            <li role="presentation"><a href="#tab3" data-toggle="tab">Messages</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="tab1" class="tab-pane fade in active">
+                <h3>HOME</h3>
+                <p>Some content.</p>
+            </div>
+            <div id="tab2" class="tab-pane fade">
+                <h3>Menu 1</h3>
+                <p>Some content in menu 1.</p>
+            </div>
+            <div id="tab3" class="tab-pane fade">
+                <h3>Menu 2</h3>
+                <p>Some content in menu 2.</p>
+            </div>
+        </div> -->
+
+    </div>
+</div>
+{% endblock content %}
+
+{% block aide %}
+
+{% endblock %}

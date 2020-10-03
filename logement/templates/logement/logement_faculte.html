@@ -1,0 +1,176 @@
+{% extends 'logement/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block title %}
+    <title>{% trans "UY1 - Demande d'attribution de chambre à la Cité Universitaire" %}</title>
+{% endblock title %}
+
+{% block content %}
+    {% with titre="logement_faculté"%}
+        {% include 'logement/logement_menuetape.html' %}
+    {% endwith %}
+<div class="col-md-6">
+    <h3>{% trans "Demande de logement à la cité Universitaire" %}</h3>
+    <form id='faculte_form' name='faculte_form' action="" method="post" class='f1'>
+        {% csrf_token %}
+        
+        {{ logement_faculte_form| crispy }}
+        
+        <input type="button" onclick="prev()" name ="bouton_faculte_prev" value="Précédent" class="btn btn-charte btn-lg" style="width: 116px">
+        <input type="submit" value="Suivant" class="btn btn-charte btn-lg" style="width: 116px">   
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+<script type="text/javascript">
+
+    function prev() {
+        window.location.href = "/logement/logement_filiation/"
+    }
+
+    $( document ).ready(function() {
+        function loadfield(callback){
+            if ($('#id_faculte').val() != "") {
+                getFiliere()
+            }
+        }
+
+        $('#id_faculte').change(function () {
+            if ($('#id_faculte').val() != "") {
+                getFiliere()
+            }
+        });
+
+        function getFiliere(){
+            $.ajax({
+                url: "{% url 'falshfsfse:get_fields' %}",
+                type: "POST",
+                data: {
+                    'school_id': $('#id_faculte').val(),
+                    'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val()
+                },
+                dataType: 'json',
+                success: function (data, status) {
+                    //alert(res);
+                    // salert(status);
+                    // var selectValues = { // Utiliser les bonnes donnees des que dispo
+                    //   "1": "test 1",
+                    //   "2": "test 2"
+                    // };
+                    var $mySelect1 = $('#id_filiere');
+                    document.getElementById("id_filiere").options.length = 0;
+                    $.each(data['data'], function(key, value) {
+                    var $option = $("<option/>", {
+                        value: value.id,
+                        text: value.name
+                    });
+                    $mySelect1.append($option);
+                    });
+                },
+                error: function (data) {
+                    // alert(data.status);                                                                                                                          
+                }
+            });
+        }
+
+        //here
+        function reprise(){
+            if(sessionStorage.getItem("LogCodeUnique") != null && sessionStorage.getItem("LogCodeUnique") != "" && sessionStorage.getItem("LogCodeUnique") != undefined){
+                $.ajax({
+                    //type: 'POST',
+                    url: '/logement/get_step_data/3/'+sessionStorage.getItem("LogCodeUnique"),
+                    data: {
+                        //csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+                    },
+                    dataType: 'json',
+                    beforeSend: function() {
+                        //$('#ftco-loader').addClass('show');
+                    },
+                    success: function (data) {
+                        //alert('ok')
+                        // document.faculte_form.faculte.value = data['faculte'] == undefined ? "" : data['faculte']
+                        if (data['faculte'] != undefined) {
+                            $('#id_faculte').val(data['faculte']).trigger('change');
+                        }
+                        
+                        // setTimeout(function(){},1000);
+                        document.faculte_form.filiere.value = data['filiere'] == undefined ? "" : data['filiere']
+                        document.faculte_form.niveau.value = data['niveau'] == undefined ? "" : data['niveau']
+                        document.faculte_form.mentionbac.value = data['mentionbac'] == undefined ? "" : data['mentionbac']
+                        document.faculte_form.niveaurepris.value = data['niveaurepris'] == undefined ? "" : data['niveaurepris']
+                        document.faculte_form.matricule.value = data['matricule'] == undefined ? "" : data['matricule']
+                        document.faculte_form.nomcite.value = data['nomcite'] == undefined ? "" : data['nomcite']
+                        document.faculte_form.renouvellement.value = data['renouvellement'] == undefined ? "" : data['renouvellement']
+                        document.faculte_form.batiment.value = data['batiment'] == undefined ? "" : data['batiment']
+                        document.faculte_form.chambre.value = data['chambre'] == undefined ? "" : data['chambre']
+                        document.faculte_form.typechambre.value = data['typechambre'] == undefined ? "" : data['typechambre']
+                        document.faculte_form.anneepre.value = data['anneepre'] == undefined ? "" : data['anneepre']
+                        document.faculte_form.anneeder.value = data['anneeder'] == undefined ? "" : data['anneeder']
+                        // $('#id_premierchoix').val(data['premierchoix']).trigger('change');
+                    },
+                    error: function (data) {
+                        //$('#ftco-loader').removeClass('show');
+                        //alert("Erreur AJAX");                                                                                                                          
+                    }
+                })
+            }
+        }
+
+        $.when( loadfield() ).done(function() {
+            setTimeout(function(){
+
+                reprise();
+            },100); // 1/10 secondes
+            
+        });
+
+
+
+        $( document ).on('submit', '#faculte_form', function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '/logement/step_3/',
+                data: {
+                    faculte: $('#id_faculte').val(),
+                    filiere: $('#id_filiere').val(),
+                    niveau: $('#id_niveau').val(),
+                    mentionbac: $('#id_mentionbac').val(),
+                    niveaurepris: $('#id_niveaurepris').val(),
+                    matricule: $('#id_matricule').val(),
+                    nomcite: $('#id_nomcite').val(),
+                    renouvellement: $('#id_renouvellement_1').val(),
+                    batiment: $('#id_batiment').val(),
+                    chambre: $('#id_chambre').val(),
+                    typechambre: $('#id_typechambre').val(),
+                    anneepre: $('#id_anneepre').val(),
+                    anneeder: $('#id_anneeder').val(),
+                    
+
+                    csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+                },
+                beforeSend: function() {
+                    $('#ftco-loader').addClass('show');
+                },
+                success: function (data) {
+                    //$('#ftco-loader').removeClass('show');
+                    //alert("ok") 
+                    window.location.href = "/logement/logement_sport/" // Le rediriger vers le step 4
+                    //Penser a sauver les donnees dans la session                                                                                                            
+                },
+                error: function (data) {
+                    $('#ftco-loader').removeClass('show');
+                    alert("Erreur au niveau du serveur");                                                                                                                          
+                }
+            })
+
+        });
+
+    });
+
+</script>
+{% endblock content %}
+
+{% block aide %}
+    {% include 'logement/logement_menuaide.html' %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{% load i18n %}
+<style>
+    .link-img{
+        color: inherit;
+    }
+    .link-img:hover{
+        color: inherit;
+    }
+</style>
+
+<div class="col-md-3 zozo f1-steps" style="/*margin-right: -165px;*/">
+    <div class="f1-step {% ifequal titre 'logement_civilité' %}active{% endifequal %}">
+        <div class="f1-step-icon"><a class="link-img" href="{% url 'logement:logement_civilite' %}"><i class="fa fa-id-card"></i></a></div>
+        <p><a href="{% url 'logement:logement_civilite' %}">{% trans "Etat civil" %}</a></p>
+    </div>
+    <div class="f1-step {% ifequal titre 'logement_filiation' %}active{% endifequal %}">
+        <div class="f1-step-icon"><a class="link-img" href="{% url 'logement:logement_filiation' %}"><i class="fa fa-user"></i></a></div>
+        <p><a href="{% url 'logement:logement_filiation' %}">{% trans "Informations de filiation" %}</a></p>
+    </div>
+    <div class="f1-step {% ifequal titre 'logement_faculté' %}active{% endifequal %}">
+        <div class="f1-step-icon"><a class="link-img" href="{% url 'logement:logement_faculte' %}"><i class="fa fa-university"></i></a></div>
+        <p><a href="{% url 'logement:logement_faculte' %}">{% trans "Faculté et études" %}</a></p>
+    </div>
+    <div class="f1-step {% ifequal titre 'logement_sport' %}active{% endifequal %}">
+        <div class="f1-step-icon"><a class="link-img" href="{% url 'logement:logement_sport' %}"><i class="fa fa-futbol-o"></i></a></div>
+        <p><a href="{% url 'logement:logement_sport' %}">{% trans "Sports et arts" %}</a></p>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+{% load i18n %}
+<style>
+    .link-img{
+        color: inherit;
+    }
+    .link-img:hover{
+        color: inherit;
+    }
+</style>
+
+<div class="col-md-3 zozo f1-steps" style="/*margin-right: -165px;*/">
+    <div class="f1-step {% ifequal titre 'civilité' %}active{% endifequal %}">
+        <div class="f1-step-icon"><a class="link-img" href="{% url 'ecoledoctorale:civilite' request.session.code_ecole %}"><i class="fa fa-id-card"></i></a></div>
+        <p><a href="{% url 'ecoledoctorale:civilite' request.session.code_ecole %}">{% trans 'Etat civil' %}</a></p>
+    </div>
+
+    <div class="f1-step {% ifequal titre 'autre' %}active{% endifequal %}">
+        <div class="f1-step-icon"><a class="link-img" href="{% url 'ecoledoctorale:autre' %}"><i class="fa fa-info"></i></a></div>
+        <p><a href="{% url 'ecoledoctorale:autre' %}">{% trans 'Informations de paiement' %}</a></p>
+    </div>
+
+    <div class="f1-step {% ifequal titre 'filiation' %}active{% endifequal %}">
+        <div class="f1-step-icon"><a class="link-img" href="{% url 'ecoledoctorale:filiation' %}"><i class="fa fa-user"></i></a></div>
+        <p><a href="{% url 'ecoledoctorale:filiation' %}">{% trans 'Informations de filiation' %}</a></p>
+    </div>
+    <div class="f1-step {% ifequal titre 'école' %}active{% endifequal %}">
+        <div class="f1-step-icon"><a class="link-img" href="{% url 'ecoledoctorale:ecole' %}"><i class="fa fa-university"></i></a></div>
+        <p><a href="{% url 'ecoledoctorale:ecole' %}">{% trans 'Ecole doctorale' %}</a></p>
+    </div>
+    <div class="f1-step {% ifequal titre 'sport' %}active{% endifequal %}">
+        <div class="f1-step-icon"><a class="link-img" href="{% url 'ecoledoctorale:sport' %}"><i class="fa fa-futbol-o"></i></a></div>
+        <p><a href="{% url 'ecoledoctorale:sport' %}">{% trans 'Informations sportives' %}</a></p>
+    </div>
+    
+</div>

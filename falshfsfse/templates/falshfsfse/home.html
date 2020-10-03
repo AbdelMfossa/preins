@@ -1,0 +1,82 @@
+{% extends 'falshfsfse/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="container col-md-9">
+    <h2 style="text-align: left; color: red;">{% blocktrans %} Si vous avez déjà un code de préinscription, cliquer {% endblocktrans %} <a href="{% url 'falshfsfse:search' %}">{% trans 'ICI' %}</a> {% trans 'pour voir votre fiche.' %}
+    </h2>
+
+    <h2 style="text-align: left; color: #4682b4;">{% trans '1- Procédure de préinscription en ligne' %}</h2>
+    <ul type="square">
+      {% blocktrans %}
+        <li>Lire <strong>toutes</strong> les informations contenues dans cette page, puis cliquez sur l’établissement de votre choix.</li>
+        <li>Régler vos droits de préinscriptions chez Express Union et UBA.</li>
+        <li>Remplir vos informations et les enregistrer en cliquant sur le bouton «valider» à la fin du formulaire.</li>
+        <li>Après la validation, imprimer la fiche obtenue qui contient <strong>votre identifiant unique</strong>.</li>
+      {% endblocktrans %}
+    </ul>
+    
+    <h2 style="text-align: left; color: #4682b4;">{% trans '2- Modalités de paiement' %}</h2>
+    <ul type="square">
+      {% blocktrans %}
+        <li>L'Université de Yaoundé I offre à l'étudiant la possibilité de payer uniquement les frais d'examen, 
+                d'admission et de scolarité dans les agences <strong>Express Union et UBA</strong> à travers le pays.</li>
+      {% endblocktrans %}
+    </ul>
+
+    <h2 style="text-align: left; color: #4682b4;">{% trans '3- Procédure de dépot physique du dossier' %}</h2>
+      {% blocktrans %}
+        <p>Pour le dépôt du dossier physique, se rendre ensuite à la Faculté choisie le jour du rendez-vous muni 
+        des pièces suivantes:</p>
+      {% endblocktrans %}
+    <ul type="square">
+      {% blocktrans %}
+        <li>Reçu de paiement des frais de préinscription qui s'élèvent à 10 000 FCFA.</li>
+        <li>02 exemplaires de votre fiche de préinscription.</li>
+        <li>Photocopie Certifiée Conforme du Relevé de Notes du Baccalauréat/GCE-AL.</li>
+        <li>Photocopie Certifiée Conforme du Probatoire/GCE-O Level ou de l’Attestation de Réussite.</li>
+        <li>Photocopie Certifiée Conforme du diplôme de Licence ou son équivalent pour l’accès à la Faculté des Sciences de l’Education.</li>
+        <li>Photocopie certifiée conforme de l’Acte de naissance.</li>
+        <li>04 photos couleurs 4x4.</li>
+      {% endblocktrans %}
+    </ul>
+
+    <h2 style="text-align: left; color: #4682b4;">{% trans '4- Validation du dossier' %}</h2>
+    <ul type="square">
+      {% blocktrans %}
+        <li>Faire absolument valider votre dossier dans une salle informatique qui vous sera indiquée lors du dépôt
+          du dossier dans la faculté choisie.</li>
+        <h4 style="color:red"><strong>Ne pas prendre le risque d'aller valider votre dossier hors du campus ou dans 
+            les bureaux non indiqués</strong>.</h4>
+      {% endblocktrans %}
+    </ul>
+    
+    <h2 style="text-align: left; color: #4682b4;">{% trans '5- Bon à savoir' %}</h2>
+    <ul type="square">
+      {% blocktrans %}
+        <li>Seuls les baccalauréats délivrés par l’Office du Baccalauréat du Cameroun (ou admis en équivalence) et
+          les GCE délivrés par le GCE Board (ou les GCE admis en équivalence) sont acceptés à l’Université de Yaoundé I; 
+          les <strong>Brevets de Techniciens ne sont pas reçus.</strong></li>
+        <li>Les listes d’admission à l’Université de Yaoundé I, sous réserve de l’authentification des diplômes, 
+            seront communiquées dès le <strong>23 octobre 2020</strong>.</li>
+        <li>Les visites médicales, <strong>sans frais supplémentaires</strong>, s’effectueront au cours du 1er mois
+            du 1er semestre selon le programme qui sera établi dans chaque établissement. Les nouveaux étudiants qui 
+            n’auront pas fait leurs visites médicales seront suspendus.</li>
+        <li>La rentrée universitaire aura lieu le <strong>15 octobre 2020</strong>.</li>
+      {% endblocktrans %}
+    </ul>
+    
+    <h2 style="text-align: left; color: #4682b4;">{% trans 'Choisissez l\'une des Facultés suivantes : ' %}</h2>
+      <ul type="square">
+          <li><a href="{% url 'falshfsfse:civilite' 1 %}">{% trans 'Faculté des Arts, Lettres et Sciences Humaines (FALSH)' %}</a></li>
+          <li><a href="{% url 'falshfsfse:civilite' 2 %}">{% trans 'Faculté des Sciences (FS)' %}</a></li>
+          <li><a href="{% url 'falshfsfse:civilite' 3 %}">{% trans 'Faculté des Sciences de l\'Education (FSE)' %}</a></li>
+          <!-- <li><a href="{% url 'falshfsfse:civilite' 4 %}">{% trans 'Faculté de Médecine et des Sciences Biomédicales (FMSB)' %}</a></li>
+          <li><a href="{% url 'falshfsfse:civilite' 5 %}">{% trans 'Ecole Nationale Supérieure Polytechnique de Yaoundé (ENSPY)' %}</a></li>
+          <li><a href="{% url 'falshfsfse:civilite' 6 %}">{% trans 'Ecole Normale Supérieure (ENS)' %}</a></li>
+          <li><a href="{% url 'falshfsfse:civilite' 7 %}">{% trans 'Ecole Normale Supérieure d\'Enseignement Technique d\'Ebolowa (ENSET)' %}</a></li>
+          <li><a href="{% url 'falshfsfse:civilite' 8 %}">{% trans 'Institut Universitaire de Technologies du Bois de Mbalmayo (IUT Bois)' %}</a></li> -->
+      </ul>
+</div>
+{% endblock content %}

@@ -1,0 +1,1293 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <stephanefedim@gmail.com>, 2020/
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-29 16:32+0200\n"
+"PO-Revision-Date: 2020-09-29 15:58+0000\n"
+"Last-Translator: b'  <stephanefedim@gmail.com>'\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.4.1\n"
+"X-Translated-Using: django-rosetta 0.9.4\n"
+
+#: .\ecoledoctorale\forms.py:11
+#: .\ecoledoctorale\templates\ecoledoctorale\navbar.html:159
+#: .\falshfsfse\forms.py:16 .\falshfsfse\templates\falshfsfse\navbar.html:159
+#: .\logement\templates\logement\navbar.html:159
+msgid "CRFD Arts, Langues et Cultures"
+msgstr "CRFD Arts, Languages and Cultures"
+
+#: .\ecoledoctorale\forms.py:11
+#: .\ecoledoctorale\templates\ecoledoctorale\navbar.html:160
+#: .\falshfsfse\forms.py:16 .\falshfsfse\templates\falshfsfse\navbar.html:160
+#: .\logement\templates\logement\navbar.html:160
+msgid "CRFD Sciences Humaines, Sociales et Educatives"
+msgstr "CRFD Human, Social and Educational Sciences"
+
+#: .\ecoledoctorale\forms.py:12
+#: .\ecoledoctorale\templates\ecoledoctorale\navbar.html:161
+#: .\falshfsfse\forms.py:17 .\falshfsfse\templates\falshfsfse\navbar.html:161
+#: .\logement\templates\logement\navbar.html:161
+msgid "CRFD Sciences et Technologies"
+msgstr "CRFD Sciences and Technologies"
+
+#: .\ecoledoctorale\forms.py:12
+#: .\ecoledoctorale\templates\ecoledoctorale\navbar.html:162
+#: .\falshfsfse\forms.py:17 .\falshfsfse\templates\falshfsfse\navbar.html:162
+#: .\logement\templates\logement\navbar.html:162
+msgid "CRFD Sciences de la Vie, Santé et Environnement"
+msgstr "CRFD Life Sciences, Health and Environment"
+
+#: .\ecoledoctorale\forms.py:17 .\falshfsfse\forms.py:22
+msgid "Temps plein"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:17 .\falshfsfse\forms.py:22
+msgid "Temps partiel"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:22 .\falshfsfse\forms.py:27
+#, fuzzy
+#| msgid "Choisissez votre faculté"
+msgid "Choisissez votre école doctorale"
+msgstr "Choose your faculty"
+
+#: .\ecoledoctorale\forms.py:23 .\falshfsfse\forms.py:28
+msgid "Votre unité de recherche"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:24 .\falshfsfse\forms.py:29
+#, fuzzy
+#| msgid "Nationalité"
+msgid "Disponibilité"
+msgstr "Nationality"
+
+#: .\ecoledoctorale\forms.py:25 .\falshfsfse\forms.py:30
+msgid "Statut désiré"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:30 .\falshfsfse\forms.py:10
+#: .\falshfsfse\forms.py:35
+msgid "Votre code de préinscription"
+msgstr "Your pre-registration code"
+
+#: .\ecoledoctorale\forms.py:37 .\falshfsfse\forms.py:42
+msgid "Féminin"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:37 .\falshfsfse\forms.py:42
+msgid "Masculin"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:38 .\falshfsfse\forms.py:43
+msgid "CELIBATAIRE"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:38 .\falshfsfse\forms.py:43
+msgid "MARIE(S))"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:38 .\falshfsfse\forms.py:43
+msgid "DIVORCE(E)"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:39 .\falshfsfse\forms.py:44
+#: .\preinscription\settings.py:130
+msgid "Français"
+msgstr "French"
+
+#: .\ecoledoctorale\forms.py:39 .\falshfsfse\forms.py:44
+#: .\preinscription\settings.py:131
+msgid "Anglais"
+msgstr "English"
+
+#: .\ecoledoctorale\forms.py:40 .\falshfsfse\forms.py:45
+msgid "SANS EMPLOI"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:40 .\falshfsfse\forms.py:45
+msgid "SALARIE(E)"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:41 .\falshfsfse\forms.py:46
+msgid "EN AUTO-EMPLOI"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:42 .\falshfsfse\forms.py:47
+#, fuzzy
+#| msgid "Profession"
+msgid "Professeur"
+msgstr "Profession"
+
+#: .\ecoledoctorale\forms.py:42 .\falshfsfse\forms.py:47
+msgid "Maître de Conférence"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:43 .\falshfsfse\forms.py:48
+msgid "Chargé de Cours"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:43
+#: .\ecoledoctorale\templates\ecoledoctorale\menuetape.html:19
+#: .\falshfsfse\forms.py:48
+msgid "Autres"
+msgstr "Other"
+
+#: .\ecoledoctorale\forms.py:45 .\ecoledoctorale\forms.py:190
+#: .\ecoledoctorale\forms.py:207 .\falshfsfse\forms.py:50
+#: .\falshfsfse\forms.py:195 .\falshfsfse\forms.py:212
+msgid "Oui"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:45 .\ecoledoctorale\forms.py:190
+#: .\ecoledoctorale\forms.py:207 .\falshfsfse\forms.py:50
+#: .\falshfsfse\forms.py:195 .\falshfsfse\forms.py:212
+#, fuzzy
+#| msgid "Nom"
+msgid "Non"
+msgstr "Name"
+
+#: .\ecoledoctorale\forms.py:50 .\falshfsfse\forms.py:55
+msgid "Nom(s)"
+msgstr "Name(s)"
+
+#: .\ecoledoctorale\forms.py:51 .\falshfsfse\forms.py:56
+msgid "Prénom(s)"
+msgstr "First name(s)"
+
+#: .\ecoledoctorale\forms.py:52 .\falshfsfse\forms.py:57 .\logement\forms.py:27
+msgid "Date de naissance"
+msgstr "Date of Birth"
+
+#: .\ecoledoctorale\forms.py:55 .\falshfsfse\forms.py:60 .\logement\forms.py:28
+msgid "Est ce la date marquée sur votre acte de naissance?"
+msgstr "Is this the date marked on your birth certificate?"
+
+#: .\ecoledoctorale\forms.py:57 .\falshfsfse\forms.py:62 .\logement\forms.py:30
+msgid "Lieu de naissance"
+msgstr "Place of birth"
+
+#: .\ecoledoctorale\forms.py:58 .\falshfsfse\forms.py:63
+msgid "Numéro de CNI"
+msgstr "CNI number"
+
+#: .\ecoledoctorale\forms.py:59 .\falshfsfse\forms.py:64 .\logement\forms.py:31
+msgid "Sexe"
+msgstr "Sex"
+
+#: .\ecoledoctorale\forms.py:60 .\falshfsfse\forms.py:65
+msgid "Adresse"
+msgstr "Address"
+
+#: .\ecoledoctorale\forms.py:61 .\falshfsfse\forms.py:66
+msgid "Votre quartier de résidence. Exemple: Obili"
+msgstr "Your neighborhood of residence. Example: Obili"
+
+#: .\ecoledoctorale\forms.py:63 .\falshfsfse\forms.py:68 .\logement\forms.py:35
+msgid "Téléphone"
+msgstr "Phone"
+
+#: .\ecoledoctorale\forms.py:64 .\ecoledoctorale\forms.py:113
+#: .\falshfsfse\forms.py:69 .\falshfsfse\forms.py:118 .\logement\forms.py:36
+#: .\logement\forms.py:63
+msgid "Ne pas mettre les espaces. Exemple: 655565758"
+msgstr "Do not put spaces. Example: 655565758"
+
+#: .\ecoledoctorale\forms.py:65 .\falshfsfse\forms.py:70 .\logement\forms.py:37
+msgid "Votre adresse e-mail"
+msgstr "Your email address"
+
+#: .\ecoledoctorale\forms.py:65 .\falshfsfse\forms.py:70 .\logement\forms.py:37
+msgid "exemple: accueil@univ-yaounde1.cm"
+msgstr "example: accueil@univ-yaounde1.cm"
+
+#: .\ecoledoctorale\forms.py:67 .\falshfsfse\forms.py:72
+msgid "Statut marital"
+msgstr "Marital status"
+
+#: .\ecoledoctorale\forms.py:69 .\falshfsfse\forms.py:74
+msgid "Première langue"
+msgstr "First language"
+
+#: .\ecoledoctorale\forms.py:71 .\falshfsfse\forms.py:76
+msgid "Statut professionnel"
+msgstr "Professional status"
+
+#: .\ecoledoctorale\forms.py:74 .\falshfsfse\forms.py:79
+msgid "Votre profession si vous en avez une."
+msgstr "Your profession if you have one."
+
+#: .\ecoledoctorale\forms.py:75 .\falshfsfse\forms.py:80
+msgid "Profession"
+msgstr "Profession"
+
+#: .\ecoledoctorale\forms.py:76 .\falshfsfse\forms.py:81
+msgid "Lieu de votre emploi"
+msgstr "Place of employment"
+
+#: .\ecoledoctorale\forms.py:77 .\falshfsfse\forms.py:82
+msgid "Si vous avez un emploi."
+msgstr "If you have a job."
+
+#: .\ecoledoctorale\forms.py:78 .\falshfsfse\forms.py:83
+msgid "Grade"
+msgstr "Grade"
+
+#: .\ecoledoctorale\forms.py:79 .\ecoledoctorale\forms.py:81
+#: .\falshfsfse\forms.py:84 .\falshfsfse\forms.py:86
+msgid "Uniquement si vous avez un emploi."
+msgstr "Only if you have a job."
+
+#: .\ecoledoctorale\forms.py:80 .\falshfsfse\forms.py:85
+msgid "Echelon"
+msgstr "Echelon"
+
+#: .\ecoledoctorale\forms.py:88 .\falshfsfse\forms.py:93
+msgid "Cameroun"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:88 .\falshfsfse\forms.py:93
+msgid "Congo"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:89 .\falshfsfse\forms.py:94
+msgid "Guinnée-équatoriale"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:90 .\falshfsfse\forms.py:95
+msgid "République Centraficaine"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:90 .\ecoledoctorale\forms.py:189
+#: .\falshfsfse\forms.py:95 .\falshfsfse\forms.py:194
+#, fuzzy
+#| msgid "Autres"
+msgid "Autre"
+msgstr "Other"
+
+#: .\ecoledoctorale\forms.py:91 .\falshfsfse\forms.py:96
+msgid "ADAMAOUA"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:91 .\falshfsfse\forms.py:96
+msgid "CENTRE"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:91 .\falshfsfse\forms.py:96
+msgid "EST"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:91 .\falshfsfse\forms.py:96
+msgid "EXTREME-NORD"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:91 .\falshfsfse\forms.py:96
+msgid "LITTORAL"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:92 .\falshfsfse\forms.py:97
+msgid "OUEST"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:92 .\falshfsfse\forms.py:97
+msgid "NORD"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:92 .\falshfsfse\forms.py:97
+msgid "NORD-OUEST"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:92 .\falshfsfse\forms.py:97
+msgid "SUD"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:93 .\falshfsfse\forms.py:98
+msgid "SUD-OUEST"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:93 .\falshfsfse\forms.py:98
+msgid "ETRANGER"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:97 .\falshfsfse\forms.py:102
+#: .\logement\forms.py:51
+msgid "Nationalité"
+msgstr "Nationality"
+
+#: .\ecoledoctorale\forms.py:98 .\falshfsfse\forms.py:103
+#: .\logement\forms.py:52
+msgid "Région d'origine"
+msgstr "Region of origin"
+
+#: .\ecoledoctorale\forms.py:100 .\falshfsfse\forms.py:105
+#: .\logement\forms.py:53
+msgid "Département d'origine"
+msgstr "Department of origin"
+
+#: .\ecoledoctorale\forms.py:103 .\falshfsfse\forms.py:108
+#: .\logement\forms.py:54
+msgid "Nom du père"
+msgstr "Father's name"
+
+#: .\ecoledoctorale\forms.py:104 .\falshfsfse\forms.py:109
+#: .\logement\forms.py:54
+msgid "Le nom de votre père"
+msgstr "Your father's name"
+
+#: .\ecoledoctorale\forms.py:105 .\falshfsfse\forms.py:110
+#: .\logement\forms.py:55
+msgid "Profession du père"
+msgstr "Father's profession"
+
+#: .\ecoledoctorale\forms.py:106 .\falshfsfse\forms.py:111
+#: .\logement\forms.py:56
+msgid "Nom de la mère"
+msgstr "Mother's name"
+
+#: .\ecoledoctorale\forms.py:107 .\falshfsfse\forms.py:112
+#: .\logement\forms.py:56
+msgid "Le nom de votre mère"
+msgstr "Your mother's name"
+
+#: .\ecoledoctorale\forms.py:108 .\falshfsfse\forms.py:113
+#: .\logement\forms.py:57
+msgid "Profession de votre mère"
+msgstr "Your mother's profession"
+
+#: .\ecoledoctorale\forms.py:109 .\falshfsfse\forms.py:114
+#: .\logement\forms.py:59
+msgid "Nom du contact pour urgence"
+msgstr "Emergency contact name"
+
+#: .\ecoledoctorale\forms.py:110 .\falshfsfse\forms.py:115
+#: .\logement\forms.py:60
+msgid ""
+"Remettre le nom du père ou de la mère si c'est la personne à contacter en "
+"cas d'urgence"
+msgstr ""
+"Give the name of the father or mother if this is the person to contact in "
+"emergency"
+
+#: .\ecoledoctorale\forms.py:112 .\falshfsfse\forms.py:117
+#: .\logement\forms.py:62
+msgid "Téléphone du contact pour urgence"
+msgstr "Emergency contact phone"
+
+#: .\ecoledoctorale\forms.py:114 .\falshfsfse\forms.py:119
+#: .\logement\forms.py:64
+msgid "Ville de résidence du contact pour urgence"
+msgstr "City of residence of the emergency contact"
+
+#: .\ecoledoctorale\forms.py:127 .\falshfsfse\forms.py:132
+msgid "Etudiant camerounais"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:127 .\falshfsfse\forms.py:132
+msgid "Etudiant étranger"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:130 .\falshfsfse\forms.py:135
+msgid "Votre faculté"
+msgstr "Your faculty"
+
+#: .\ecoledoctorale\forms.py:131 .\falshfsfse\forms.py:136
+msgid "disabled"
+msgstr "Disabled"
+
+#: .\ecoledoctorale\forms.py:134 .\falshfsfse\forms.py:139
+msgid "Code du Questionnaire d'orientation"
+msgstr "Guidance Questionnaire Code"
+
+#: .\ecoledoctorale\forms.py:136 .\falshfsfse\forms.py:141
+msgid "Obtenez le code en cliquant sur le lien ci dessous"
+msgstr "Get the code by clicking on the link below"
+
+#: .\ecoledoctorale\forms.py:138 .\falshfsfse\forms.py:143
+msgid "Premier choix de filière"
+msgstr "First choice of faculty"
+
+#: .\ecoledoctorale\forms.py:140 .\falshfsfse\forms.py:145
+msgid "Second choix de filière"
+msgstr "Second choice of faculty"
+
+#: .\ecoledoctorale\forms.py:142 .\falshfsfse\forms.py:147
+msgid "Troisième choix de filière"
+msgstr "Third choice of faculty"
+
+#: .\ecoledoctorale\forms.py:144 .\falshfsfse\forms.py:149
+msgid "Niveau souhaité"
+msgstr "Desired level"
+
+#: .\ecoledoctorale\forms.py:145 .\falshfsfse\forms.py:150
+msgid "Votre Statut"
+msgstr "Your status"
+
+#: .\ecoledoctorale\forms.py:152 .\falshfsfse\forms.py:157
+msgid "BACC CAMEROUNAIS"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:152 .\falshfsfse\forms.py:157
+msgid "BACC ETRANGER"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:152 .\falshfsfse\forms.py:157
+msgid "GCE A LEVEL"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:153 .\falshfsfse\forms.py:158
+msgid "GCE O LEVEL"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:153 .\falshfsfse\forms.py:158
+msgid "DEUG"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:153 .\falshfsfse\forms.py:158
+msgid "LICENCE"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:153 .\falshfsfse\forms.py:158
+msgid "LICENCE PROFESSIONNELLE"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:154 .\falshfsfse\forms.py:159
+msgid "LICENCE EN SCIENCES BIOMEDICALES"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:154 .\falshfsfse\forms.py:159
+msgid "MASTER 1"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:154 .\falshfsfse\forms.py:159
+msgid "MASTER 2"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:155 .\falshfsfse\forms.py:160
+msgid "DIPES 1"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:155 .\falshfsfse\forms.py:160
+msgid "CSCT"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:155 .\falshfsfse\forms.py:160
+msgid "RELEVE DE NOTES"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:156 .\falshfsfse\forms.py:161
+msgid "DIPLÔME D'ETAT D'INFIRMIER"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:156 .\falshfsfse\forms.py:161
+msgid "DOCTORAT"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:157 .\falshfsfse\forms.py:162
+msgid "DOCTORAT EN MEDECINE OU EN PHARMACIE"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:160 .\falshfsfse\forms.py:165
+msgid "Licence 1"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:160 .\falshfsfse\forms.py:165
+msgid "Licence 2"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:160 .\falshfsfse\forms.py:165
+msgid "Licence 3"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:160 .\falshfsfse\forms.py:165
+msgid "Master 1"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:161 .\falshfsfse\forms.py:166
+msgid "Master 2"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:167 .\falshfsfse\forms.py:172
+msgid "Nom du diplôme soumis"
+msgstr "Name of diploma submitted"
+
+#: .\ecoledoctorale\forms.py:169 .\falshfsfse\forms.py:174
+msgid "Année d'obtention"
+msgstr "Year of graduation"
+
+#: .\ecoledoctorale\forms.py:170 .\falshfsfse\forms.py:175
+msgid "Saississez juste l'année. Exple: 2020"
+msgstr "Just enter the year. Example: 2020"
+
+#: .\ecoledoctorale\forms.py:171 .\falshfsfse\forms.py:176
+msgid "Moyenne obtenue"
+msgstr "Average"
+
+#: .\ecoledoctorale\forms.py:172 .\falshfsfse\forms.py:177
+msgid "Entrez votre moyenne sur 20. Exemple: 12.8"
+msgstr "Enter your average out of 20. Example: 12.8"
+
+#: .\ecoledoctorale\forms.py:173 .\falshfsfse\forms.py:178
+msgid "Observation du jury ou mention"
+msgstr "Jury observation or mention"
+
+#: .\ecoledoctorale\forms.py:175 .\falshfsfse\forms.py:180
+msgid "Emetteur du diplôme"
+msgstr "Diploma issuer"
+
+#: .\ecoledoctorale\forms.py:176 .\falshfsfse\forms.py:181
+msgid ""
+"Mentionnez l'institution qui a fourni votre diplôme. Exple: OBC, GCE Board"
+msgstr ""
+"Mention the institution that provided your diploma. Exple: OBC, GCE Board"
+
+#: .\ecoledoctorale\forms.py:177 .\falshfsfse\forms.py:182
+msgid "Date de délivrance du diplôme"
+msgstr "Date of issue of the diploma"
+
+#: .\ecoledoctorale\forms.py:180 .\falshfsfse\forms.py:185
+msgid "Nombre de papiers soumis"
+msgstr "Number of papers submitted"
+
+#: .\ecoledoctorale\forms.py:181 .\falshfsfse\forms.py:186
+msgid "Uniquement pour GCE A/L"
+msgstr "Only for GCE A / L"
+
+#: .\ecoledoctorale\forms.py:188 .\falshfsfse\forms.py:193
+msgid "BasketBall"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:188 .\falshfsfse\forms.py:193
+msgid "Handball"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:188 .\falshfsfse\forms.py:193
+msgid "Football"
+msgstr ""
+
+#: .\ecoledoctorale\forms.py:193 .\falshfsfse\forms.py:198
+#: .\logement\forms.py:113
+msgid "Sport pratiqué"
+msgstr "Practiced sport"
+
+#: .\ecoledoctorale\forms.py:196 .\falshfsfse\forms.py:201
+msgid "Si autre, indiquez le sport"
+msgstr "If other, indicate the sport"
+
+#: .\ecoledoctorale\forms.py:197 .\falshfsfse\forms.py:202
+msgid "Mettre le sport que vous pratiquez et qui n'est pas cité au dessus"
+msgstr "Add the sport you practice that is not listed above."
+
+#: .\ecoledoctorale\forms.py:198 .\falshfsfse\forms.py:203
+#: .\logement\forms.py:33
+msgid "Avez vous un handicap?"
+msgstr "Do you have a disability?"
+
+#: .\ecoledoctorale\forms.py:210 .\falshfsfse\forms.py:215
+msgid "Lieu de paiement"
+msgstr "Place of payment"
+
+#: .\ecoledoctorale\forms.py:211 .\falshfsfse\forms.py:216
+msgid "Numéro de transaction"
+msgstr "Transaction number"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\autre.html:10
+#: .\ecoledoctorale\templates\ecoledoctorale\civilite.html:10
+#: .\ecoledoctorale\templates\ecoledoctorale\diplome.html:10
+#: .\ecoledoctorale\templates\ecoledoctorale\ecole.html:10
+#: .\ecoledoctorale\templates\ecoledoctorale\faculte.html:10
+#: .\ecoledoctorale\templates\ecoledoctorale\filiation.html:10
+#: .\ecoledoctorale\templates\ecoledoctorale\sport.html:10
+#: .\falshfsfse\templates\falshfsfse\autre.html:10
+#: .\falshfsfse\templates\falshfsfse\civilite.html:10
+#: .\falshfsfse\templates\falshfsfse\diplome.html:10
+#: .\falshfsfse\templates\falshfsfse\faculte.html:10
+#: .\falshfsfse\templates\falshfsfse\filiation.html:10
+#: .\falshfsfse\templates\falshfsfse\sport.html:10
+msgid "Préinscription en"
+msgstr "Pre-registration in"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\autre.html:11
+#: .\ecoledoctorale\templates\ecoledoctorale\civilite.html:11
+#: .\ecoledoctorale\templates\ecoledoctorale\diplome.html:11
+#: .\ecoledoctorale\templates\ecoledoctorale\faculte.html:11
+#: .\ecoledoctorale\templates\ecoledoctorale\filiation.html:11
+#: .\ecoledoctorale\templates\ecoledoctorale\sport.html:11
+#: .\falshfsfse\templates\falshfsfse\autre.html:11
+#: .\falshfsfse\templates\falshfsfse\civilite.html:11
+#: .\falshfsfse\templates\falshfsfse\diplome.html:11
+#: .\falshfsfse\templates\falshfsfse\faculte.html:11
+#: .\falshfsfse\templates\falshfsfse\filiation.html:11
+#: .\falshfsfse\templates\falshfsfse\sport.html:11
+msgid "Tous les champs marqués d\\"
+msgstr "All fields marked with"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\autre.html:11
+#: .\ecoledoctorale\templates\ecoledoctorale\civilite.html:11
+#: .\ecoledoctorale\templates\ecoledoctorale\diplome.html:11
+#: .\ecoledoctorale\templates\ecoledoctorale\faculte.html:11
+#: .\ecoledoctorale\templates\ecoledoctorale\filiation.html:11
+#: .\ecoledoctorale\templates\ecoledoctorale\sport.html:11
+#: .\falshfsfse\templates\falshfsfse\autre.html:11
+#: .\falshfsfse\templates\falshfsfse\civilite.html:11
+#: .\falshfsfse\templates\falshfsfse\diplome.html:11
+#: .\falshfsfse\templates\falshfsfse\faculte.html:11
+#: .\falshfsfse\templates\falshfsfse\filiation.html:11
+#: .\falshfsfse\templates\falshfsfse\sport.html:11
+msgid "sont obligatoires."
+msgstr "are required."
+
+#: .\ecoledoctorale\templates\ecoledoctorale\base.html:10
+#: .\falshfsfse\templates\falshfsfse\base.html:10
+#: .\logement\templates\logement\base.html:10
+msgid "Préinscriptions en ligne de l'Université de Yaoundé 1"
+msgstr "Online pre-registration at the University of Yaoundé 1"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\base.html:95
+#: .\falshfsfse\templates\falshfsfse\base.html:95
+#: .\logement\templates\logement\base.html:98
+msgid "Université de Yaoundé I"
+msgstr "University of Yaoundé I"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\base.html:98
+#: .\falshfsfse\templates\falshfsfse\base.html:98
+#: .\logement\templates\logement\base.html:100
+msgid "Qui sommes nous ?"
+msgstr "Who are we ?"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\base.html:100
+#: .\ecoledoctorale\templates\ecoledoctorale\navbar.html:182
+#: .\falshfsfse\templates\falshfsfse\base.html:100
+#: .\falshfsfse\templates\falshfsfse\navbar.html:182
+#: .\logement\templates\logement\base.html:102
+#: .\logement\templates\logement\navbar.html:182
+msgid "Nous contacter"
+msgstr "Contact us"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\ecole.html:11
+msgid "Préinscription en école doctorale"
+msgstr "Online pre-registration of the"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:7
+#: .\falshfsfse\templates\falshfsfse\home.html:7
+msgid " Si vous avez déjà un code de préinscription, cliquer "
+msgstr "If you already have a pre-registration code, click "
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:7
+#: .\falshfsfse\templates\falshfsfse\home.html:7
+msgid "ICI"
+msgstr "HERE"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:7
+#: .\falshfsfse\templates\falshfsfse\home.html:7
+msgid "pour voir votre fiche."
+msgstr "to modify your file."
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:10
+#: .\falshfsfse\templates\falshfsfse\home.html:10
+msgid "1- Procédure de préinscription en ligne"
+msgstr "1- Online pre-registration procedure"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:12
+#: .\falshfsfse\templates\falshfsfse\home.html:12
+msgid ""
+"\n"
+"        <li>Lire <strong>toutes</strong> les informations contenues dans "
+"cette page, puis cliquez sur l’établissement de votre choix.</li>\n"
+"        <li>Régler vos droits de préinscriptions chez Express Union et UBA.</"
+"li>\n"
+"        <li>Remplir vos informations et les enregistrer en cliquant sur le "
+"bouton «valider» à la fin du formulaire.</li>\n"
+"        <li>Après la validation, imprimer la fiche obtenue qui contient "
+"<strong>votre identifiant unique</strong>.</li>\n"
+"      "
+msgstr ""
+"\n"
+"<li> Read <strong> all </strong> information contained inon this page, then "
+"click on the establishment of your choice. </li> \n"
+"<li> Set your pre-registration rights with Express Union and UBA. </li> \n"
+"<li> Fill in your information and save them by clicking on thebutton "
+"«validate» at the end of the form. </li> \n"
+"<li> After validation, print the file obtained which contains<strong> your "
+"unique identifier </strong>. </li> \n"
+"  "
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:20
+#: .\falshfsfse\templates\falshfsfse\home.html:20
+msgid "2- Modalités de paiement"
+msgstr "2- Payment terms"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:22
+#: .\falshfsfse\templates\falshfsfse\home.html:22
+msgid ""
+"\n"
+"        <li>L'Université de Yaoundé I offre à l'étudiant la possibilité de "
+"payer uniquement les frais d'examen, \n"
+"                d'admission et de scolarité dans les agences <strong>Express "
+"Union et UBA</strong> à travers le pays.</li>\n"
+"      "
+msgstr ""
+"\n"
+"<li> The University of Yaoundé I offers the student the possibility of pay "
+"the exam fee, \n"
+"admission and tuition at Express Union agencies at across the country. </"
+"li> \n"
+"<li> Students can also perform these operations in UBA agencies. </li> \n"
+"  "
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:28
+#: .\falshfsfse\templates\falshfsfse\home.html:28
+msgid "3- Procédure de dépot physique du dossier"
+msgstr "3- Procedure for the physical submission of the file"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:29
+#: .\falshfsfse\templates\falshfsfse\home.html:29
+msgid ""
+"\n"
+"        <p>Pour le dépôt du dossier physique, se rendre ensuite à la Faculté "
+"choisie le jour du rendez-vous muni \n"
+"        des pièces suivantes:</p>\n"
+"      "
+msgstr ""
+"\n"
+"<p> For the submission of the physical file, then go to the Facultychosen on "
+"the day of the meeting with \n"
+"from the following pieces: </p> \n"
+"  "
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:34
+#: .\falshfsfse\templates\falshfsfse\home.html:34
+msgid ""
+"\n"
+"        <li>Reçu de paiement des frais de préinscription qui s'élèvent à 10 "
+"000 FCFA.</li>\n"
+"        <li>02 exemplaires de votre fiche de préinscription.</li>\n"
+"        <li>Photocopie Certifiée Conforme du Relevé de Notes du Baccalauréat/"
+"GCE-AL.</li>\n"
+"        <li>Photocopie Certifiée Conforme du Probatoire/GCE-O Level ou de "
+"l’Attestation de Réussite.</li>\n"
+"        <li>Photocopie Certifiée Conforme du diplôme de Licence ou son "
+"équivalent pour l’accès à la Faculté des Sciences de l’Education.</li>\n"
+"        <li>Photocopie certifiée conforme de l’Acte de naissance.</li>\n"
+"        <li>04 photos couleurs 4x4.</li>\n"
+"      "
+msgstr ""
+"\n"
+"<li> Pre-registration fee payment receipt whichamount to <strong> 10,000 "
+"FCFA </strong> payable at Express Union and UBA.</li> \n"
+"<li> Certified True Copy of <strong> Transcript of Notes ofBaccalaureate </"
+"strong>. </li> \n"
+"\t\t\t\t<li> Certified Copy Compliant of <strong> Probatoire/GCE-O Level </"
+"strong>or <strong> Certificate of Achievement </strong>. </li>\n"
+"\t\t\t\t<li> Certified Copy of the <strong> License degree </strong>or its "
+"equivalent for access to the Faculty of Educational Sciences. </li>\n"
+"<li> Certified copy of <strong> Birth certificate </strong>. </li>\n"
+"   "
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:45
+#: .\falshfsfse\templates\falshfsfse\home.html:45
+msgid "4- Validation du dossier"
+msgstr "4- Validation of the file"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:47
+#: .\falshfsfse\templates\falshfsfse\home.html:47
+msgid ""
+"\n"
+"        <li>Faire absolument valider votre dossier dans une salle "
+"informatique qui vous sera indiquée lors du dépôt\n"
+"          du dossier dans la faculté choisie.</li>\n"
+"        <h4 style=\"color:red\"><strong>Ne pas prendre le risque d'aller "
+"valider votre dossier hors du campus ou dans \n"
+"            les bureaux non indiqués</strong>.</h4>\n"
+"      "
+msgstr ""
+"\n"
+"<li> Make absolutely validate your file in a roomcomputer which will be "
+"indicated to you during the deposit \n"
+"from the folder in the chosen faculty. </li> \n"
+"<h4 style = \"color: red \"> <strong> Don't take the risk of goingvalidate "
+"your file off campus or in \n"
+"unspecified offices </strong>. </h4> \n"
+"  "
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:55
+#: .\falshfsfse\templates\falshfsfse\home.html:55
+msgid "5- Bon à savoir"
+msgstr "5- Good to know"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:57
+#: .\falshfsfse\templates\falshfsfse\home.html:57
+msgid ""
+"\n"
+"        <li>Seuls les baccalauréats délivrés par l’Office du Baccalauréat du "
+"Cameroun (ou admis en équivalence) et\n"
+"          les GCE délivrés par le GCE Board (ou les GCE admis en "
+"équivalence) sont acceptés à l’Université de Yaoundé I; \n"
+"          les <strong>Brevets de Techniciens ne sont pas reçus.</strong></"
+"li>\n"
+"        <li>Les listes d’admission à l’Université de Yaoundé I, sous réserve "
+"de l’authentification des diplômes, \n"
+"            seront communiquées dès le <strong>23 octobre 2020</strong>.</"
+"li>\n"
+"        <li>Les visites médicales, <strong>sans frais supplémentaires</"
+"strong>, s’effectueront au cours du 1er mois\n"
+"            du 1er semestre selon le programme qui sera établi dans chaque "
+"établissement. Les nouveaux étudiants qui \n"
+"            n’auront pas fait leurs visites médicales seront suspendus.</"
+"li>\n"
+"        <li>La rentrée universitaire aura lieu le <strong>15 octobre 2020</"
+"strong>.</li>\n"
+"      "
+msgstr ""
+"\n"
+"<li> Only the baccalaureates issued by the Baccalaureate Office ofCameroon "
+"or admitted in equivalence and \n"
+"GCEs issued by the GCE Board or GCEs recognized as equivalentare accepted at "
+"the University of Yaoundé I; \n"
+"Technicians' Certificates are not accepted. </li> \n"
+"<li> The admission lists for the University of Yaoundé I, subject todiploma "
+"authentication, \n"
+"will be communicated as of <strong> .. October 2020 </strong>. </li> \n"
+"<li> Medical visits, <strong> at no additional cost </strong>, will take "
+"place during the 1st month \n"
+"of the 1st semester according to the program which will be established in "
+"eachinstitution. New students who \n"
+"will not have made their medical visits will be suspended. </li> \n"
+"<li> The start of the academic year will take place on <strong> October 15, "
+"2020 </strong>. </li> \n"
+"  "
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:70
+#: .\falshfsfse\templates\falshfsfse\home.html:70
+msgid "Choisissez l\\"
+msgstr "Choose the"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:72
+#: .\falshfsfse\templates\falshfsfse\home.html:72
+msgid "Faculté des Arts, Lettres et Sciences Humaines (FALSH)"
+msgstr "Faculty of Arts, Letters and Human Sciences (FALSH)"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:73
+#: .\falshfsfse\templates\falshfsfse\home.html:73
+msgid "Faculté des Sciences (FS)"
+msgstr "Faculty of Sciences"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:74
+#: .\falshfsfse\templates\falshfsfse\home.html:74
+msgid "Faculté des Sciences de l\\"
+msgstr "Faculty of Sciences (FS)"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:75
+#: .\falshfsfse\templates\falshfsfse\home.html:75
+msgid "Faculté de Médecine et des Sciences Biomédicales (FMSB)"
+msgstr "Faculty of Medicine and Biomedical Sciences (FMSB)"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:76
+#: .\falshfsfse\templates\falshfsfse\home.html:76
+msgid "Ecole Nationale Supérieure Polytechnique de Yaoundé (ENSPY)"
+msgstr "National Polytechnic School of Yaoundé (ENSPY)"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:77
+#: .\falshfsfse\templates\falshfsfse\home.html:77
+msgid "Ecole Normale Supérieure (ENS)"
+msgstr "Ecole Normale Supérieure (ENS)"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:78
+#: .\falshfsfse\templates\falshfsfse\home.html:78
+msgid "Ecole Normale Supérieure d\\"
+msgstr "Normal Higher School of"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\home.html:79
+#: .\falshfsfse\templates\falshfsfse\home.html:79
+msgid "Institut Universitaire de Technologies du Bois de Mbalmayo (IUT Bois)"
+msgstr "University Institute of Wood Technologies of Mbalmayo (IUT Bois)"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\menuaide.html:6
+msgid "Procédure de dépôt physique du dossier"
+msgstr "Procedure for the physical submission of the file"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\menuaide.html:10
+msgid ""
+"\n"
+"                <li>Reçu de paiement des frais de préinscription qui "
+"s'élèvent à <strong>10 000 FCFA</strong> payables chez Express Union et UBA."
+"</li>\n"
+"                <li>Copie Certifiée Conforme du <strong>Relevé de Notes du "
+"Baccalauréat</strong>.</li>\n"
+"\t\t\t\t<li>Copie Certifiée Conforme du <strong>Probatoire/GCE-O Level</"
+"strong> ou <strong>de l’Attestation de Réussite</strong>.</li>\n"
+"\t\t\t\t<li>Copie Certifiée Conforme du <strong>diplôme de Licence</strong> "
+"ou son équivalent pour l’accès à la Faculté des Sciences de l’Education.</"
+"li>\n"
+"                <li>Copie certifiée conforme de <strong>l’Acte de naissance</"
+"strong>.</li>\n"
+"                "
+msgstr ""
+"\n"
+"<li> Pre-registration fee payment receipt whichamount to <strong> 10,000 "
+"FCFA </strong> payable at Express Union and UBA.</li> \n"
+"<li> Certified True Copy of <strong> Transcript of Notes ofBaccalaureate </"
+"strong>. </li> \n"
+"\t\t\t\t<li> Certified Copy Compliant of <strong> Probatoire/GCE-O Level </"
+"strong>or <strong> Certificate of Achievement </strong>. </li>\n"
+"\t\t\t\t<li> Certified Copy of the <strong> License degree </strong>or its "
+"equivalent for access to the Faculty of Educational Sciences. </li>\n"
+"<li> Certified copy of <strong> Birth certificate </strong>. </li>\n"
+"   "
+
+#: .\ecoledoctorale\templates\ecoledoctorale\menuetape.html:14
+#: .\falshfsfse\templates\falshfsfse\menuetape.html:15
+#: .\falshfsfse\templates\falshfsfse\menuetape.html:20
+#: .\logement\templates\logement\logement_menuetape.html:14
+msgid "Etat civil"
+msgstr "Civil status"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\menuetape.html:24
+#: .\falshfsfse\templates\falshfsfse\menuetape.html:29
+#: .\logement\templates\logement\logement_menuetape.html:18
+msgid "Informations de filiation"
+msgstr "filiation Information"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\menuetape.html:28
+#: .\ecoledoctorale\templates\ecoledoctorale\navbar.html:155
+#: .\falshfsfse\templates\falshfsfse\navbar.html:155
+#: .\logement\templates\logement\navbar.html:155
+msgid "Ecole doctorale"
+msgstr "Doctoral school"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\menuetape.html:32
+#: .\falshfsfse\templates\falshfsfse\menuetape.html:41
+msgid "Informations sportives"
+msgstr "Sports information"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\navbar.html:150
+#: .\falshfsfse\templates\falshfsfse\navbar.html:150
+#: .\logement\templates\logement\navbar.html:150
+msgid "UY1 PREINSCRIPTIONS 2020-2021"
+msgstr "UY1 PRE-REGISTRATIONS 2020-2021"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\navbar.html:152
+#: .\falshfsfse\templates\falshfsfse\navbar.html:152
+#: .\logement\templates\logement\navbar.html:152
+msgid "Accueil"
+msgstr "Home"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\navbar.html:167
+#: .\falshfsfse\templates\falshfsfse\navbar.html:167
+#: .\logement\templates\logement\navbar.html:167
+msgid "Logement"
+msgstr "Accommodation"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\navbar.html:171
+#: .\falshfsfse\templates\falshfsfse\navbar.html:171
+#: .\logement\templates\logement\navbar.html:171
+msgid "Faire ma demande de logement"
+msgstr "Request my accommodation"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\navbar.html:172
+#: .\falshfsfse\templates\falshfsfse\navbar.html:172
+#: .\logement\templates\logement\navbar.html:172
+msgid "Suivre ma demande de logement"
+msgstr "Follow my housing application"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\navbar.html:177
+#: .\falshfsfse\templates\falshfsfse\navbar.html:177
+#: .\logement\templates\logement\navbar.html:177
+msgid "Université de Yaoundé 1"
+msgstr "University of Yaoundé 1"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\navbar.html:181
+#: .\falshfsfse\templates\falshfsfse\navbar.html:181
+#: .\logement\templates\logement\navbar.html:181
+msgid "Visiter le site de Uy1"
+msgstr "Visit the Uy1 website"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\navbar.html:205
+#: .\falshfsfse\templates\falshfsfse\navbar.html:185
+#: .\logement\templates\logement\navbar.html:185
+msgid "Connexion"
+msgstr "Login"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\navbar.html:206
+#: .\falshfsfse\templates\falshfsfse\navbar.html:186
+#: .\logement\templates\logement\navbar.html:186
+msgid "Aide"
+msgstr "Help"
+
+#: .\ecoledoctorale\templates\ecoledoctorale\navbar.html:207
+#: .\falshfsfse\templates\falshfsfse\navbar.html:187
+#: .\logement\templates\logement\navbar.html:187
+msgid "Voir sa fiche"
+msgstr "View his profile"
+
+#: .\falshfsfse\templates\falshfsfse\menuaide.html:6
+msgid "Liste des pièces à fournir pour le dépôt physique du dossier"
+msgstr "Procedure for the physical submission of the file"
+
+#: .\falshfsfse\templates\falshfsfse\menuaide.html:10
+msgid ""
+"\n"
+"                <li>Reçu de paiement des frais de préinscription qui "
+"s'élèvent à <strong>10 000 FCFA</strong> payables chez Express Union et UBA."
+"</li>\n"
+"                <li>02 exemplaires de <strong>votre fiche de préinscription</"
+"strong>.</li>\n"
+"                <li>Photocopie Certifiée Conforme du <strong>Relevé de Notes "
+"du Baccalauréat</strong>.</li>\n"
+"\t\t\t\t<li>Photocopie Certifiée Conforme du <strong>Probatoire/GCE-O Level</"
+"strong> ou <strong>de l’Attestation de Réussite</strong>.</li>\n"
+"\t\t\t\t<li>Photocopie Certifiée Conforme du <strong>diplôme de Licence</"
+"strong> ou son équivalent pour l’accès à la Faculté des Sciences de "
+"l’Education.</li>\n"
+"                <li>Photocopie certifiée conforme de <strong>l’Acte de "
+"naissance</strong>.</li>\n"
+"                <li>04 photos couleurs 4x4.</li>\n"
+"                "
+msgstr ""
+"\n"
+"<li> Pre-registration fee payment receipt whichamount to <strong> 10,000 "
+"FCFA </strong> payable at Express Union and UBA.</li> \n"
+"<li> 02 copies of <strong> your pre-registration form </strong>. </li>\n"
+"<li> Certified True Copy of <strong> Transcript of Notes ofBaccalaureate </"
+"strong>. </li> \n"
+"<li> Certified Copy Compliant of <strong> Probatoire/GCE-O Level </strong>or "
+"<strong> Certificate of Achievement </strong>. </li>\n"
+"<li> Certified Copy of the <strong> License degree </strong>or its "
+"equivalent for access to the Faculty of Educational Sciences. </li>\n"
+"<li> Certified copy of <strong> Birth certificate </strong>. </li>\n"
+"<li>04 4x4 color photos</li>"
+
+#: .\falshfsfse\templates\falshfsfse\menuetape.html:25
+#, fuzzy
+msgid "Infos. paiement"
+msgstr "Payment informations"
+
+#: .\falshfsfse\templates\falshfsfse\menuetape.html:33
+msgid "Faculté et études souhaitées"
+msgstr "Faculty and desired studies"
+
+#: .\falshfsfse\templates\falshfsfse\menuetape.html:37
+msgid "Diplômes présentés"
+msgstr "Degrees presented"
+
+#: .\logement\forms.py:8
+msgid "Votre code de logement"
+msgstr "Your accommodation code"
+
+#: .\logement\forms.py:25
+msgid "Nom"
+msgstr "Name"
+
+#: .\logement\forms.py:26
+msgid "Prénom"
+msgstr "First name"
+
+#: .\logement\forms.py:32
+msgid "Résidence actuelle des parents"
+msgstr "Current residence of parents"
+
+#: .\logement\forms.py:58
+msgid "Téléphones des parents"
+msgstr "Parent's phones"
+
+#: .\logement\forms.py:90
+msgid "Faculté ou école"
+msgstr "Faculty or school"
+
+#: .\logement\forms.py:91
+msgid "Votre filière"
+msgstr "Your faculty"
+
+#: .\logement\forms.py:92
+msgid "Niveau d'études"
+msgstr "Level of studies"
+
+#: .\logement\forms.py:93
+msgid "Mention au Baccalauréat/GCE"
+msgstr "Mention in the Baccalaureate /GCE"
+
+#: .\logement\forms.py:94
+msgid "Niveau ou classe reprise"
+msgstr "Level or class taken"
+
+#: .\logement\forms.py:95
+msgid "Votre matricule ou code de préinscription"
+msgstr "Your registration number or pre-registration code"
+
+#: .\logement\forms.py:96
+msgid "Dénomination de la Cité sollicitée"
+msgstr "Name of the requested City"
+
+#: .\logement\forms.py:97
+msgid "Est-ce un renouvellement?"
+msgstr "Is it a renewal?"
+
+#: .\logement\forms.py:98
+msgid "N° Bâtiment"
+msgstr "N° Building"
+
+#: .\logement\forms.py:99
+msgid "N° Chambre"
+msgstr "N° Room"
+
+#: .\logement\forms.py:100
+msgid "Type de chambre"
+msgstr "Room type"
+
+#: .\logement\forms.py:101
+msgid "Votre 1ère année de résidence à la Cité-U"
+msgstr "Your 1st year of residency at Cité-U"
+
+#: .\logement\forms.py:102
+msgid "Votre dernière année de résidence à la Cité-U"
+msgstr "Your last year of residency at Cité-U"
+
+#: .\logement\forms.py:115
+msgid "Art pratiqué"
+msgstr "Practiced art"
+
+#: .\logement\templates\logement\logement_civilite.html:6
+#: .\logement\templates\logement\logement_faculte.html:6
+#: .\logement\templates\logement\logement_filiation.html:6
+#: .\logement\templates\logement\logement_sport.html:6
+msgid "UY1 - Demande d'attribution de chambre à la Cité Universitaire"
+msgstr "Request a room at the Cité Universitaire at the"
+
+#: .\logement\templates\logement\logement_civilite.html:14
+#: .\logement\templates\logement\logement_faculte.html:14
+#: .\logement\templates\logement\logement_filiation.html:14
+#: .\logement\templates\logement\logement_sport.html:14
+msgid "Demande de logement à la cité Universitaire"
+msgstr "Application for housing at the Cité Universitaire"
+
+#: .\logement\templates\logement\logement_fiche.html:5
+msgid "UY1 - Suivre ma demande d'attribution de chambre"
+msgstr "UY1 - Track my request"
+
+#: .\logement\templates\logement\logement_fiche.html:12
+msgid "Modifier ses informations"
+msgstr "Modify your information"
+
+#: .\logement\templates\logement\logement_fiche.html:13
+msgid "Recevoir le dossier"
+msgstr "Receive the file"
+
+#: .\logement\templates\logement\logement_fiche.html:14
+msgid "Imprimer sa fiche"
+msgstr "Print the card"
+
+#: .\logement\templates\logement\logement_fiche.html:15
+msgid "Télécharger sa fiche"
+msgstr "Print the card"
+
+#: .\logement\templates\logement\logement_fiche.html:18
+msgid "Demande de chambre à la Cité Universitaire à l'UY1 sous le code :"
+msgstr "Request a room at the Cité Universitaire at the"
+
+#: .\logement\templates\logement\logement_fiche.html:24
+msgid "Etat-Civil du candidat"
+msgstr "Civil status of the candidate"
+
+#: .\logement\templates\logement\logement_menuaide.html:6
+msgid "Procédure de dépôt physique du dossier (Logement)"
+msgstr "Procedure for the physical submission of the file (Housing)"
+
+#: .\logement\templates\logement\logement_menuaide.html:10
+#, fuzzy
+#| msgid "Photocopie fiche d\\'information en ligne"
+msgid "Photocopie fiche d\\'information en ligne signée par le candidat"
+msgstr "Photocopy of sheet d"
+
+#: .\logement\templates\logement\logement_menuaide.html:11
+#, fuzzy
+#| msgid "Photocopie de la carte nationale d\\'identité"
+msgid ""
+"Photocopie de la carte nationale d\\'identité ou Copie Certifée conforme de l"
+"\\'acte de naissance"
+msgstr "Photocopy of the national card of"
+
+#: .\logement\templates\logement\logement_menuaide.html:12
+msgid "02 photos 4x4"
+msgstr "02 4x4 photos"
+
+#: .\logement\templates\logement\logement_menuetape.html:22
+msgid "Faculté et études"
+msgstr "Faculty and studies"
+
+#: .\logement\templates\logement\logement_menuetape.html:26
+msgid "Sports et arts"
+msgstr "Sports and arts"
+
+#: .\logement\templates\logement\logement_search.html:6
+msgid "UY1 - Suivre ma demande d"
+msgstr "UY1 - Track my request"
+
+#: .\logement\templates\logement\logement_search.html:11
+msgid "UNIVERSITE DE YAOUNDE I"
+msgstr "UNIVERSITY OF YAOUNDE I"
+
+#: .\logement\templates\logement\logement_search.html:12
+msgid "DEMANDE OU RENOUVELLEMENT DE CHAMBRES"
+msgstr "REQUEST OR RENEWAL OF ROOMS"
+
+#, fuzzy
+#~| msgid "Anglais"
+#~ msgid "anglais"
+#~ msgstr "English"
+
+#~ msgid "UY1 PREINSCRIPTIONS"
+#~ msgstr "UY1 PRE-REGISTRATIONS"
+
+#~ msgid ""
+#~ "\n"
+#~ "        <li>Copie Certifiée Conforme du Relevé de Notes du Baccalauréat.</"
+#~ "li>\n"
+#~ "        <li>Copie Certifiée Conforme du Probatoire/GCE-O Level ou de "
+#~ "l’Attestation de Réussite.</li>\n"
+#~ "        <li>Copie Certifiée Conforme du diplôme de Licence ou son "
+#~ "équivalent pour l’accès à la Faculté des Sciences de l’Education.</li>\n"
+#~ "        <li>Copie certifiée conforme de l’Acte de naissance.</li>\n"
+#~ "        <li>Reçu de paiement des frais de préinscription qui s'élèvent à "
+#~ "10 000 FCFA.</li>\n"
+#~ "      "
+#~ msgstr ""
+#~ "\n"
+#~ "<li> Certified Compliant Copy of the Baccalaureate Transcript. </li> \n"
+#~ "<li> Certified Compliant Copy of the Probatoire / GCE-O Level "
+#~ "orCertificate of Success. </li> \n"
+#~ "<li> Certified true copy of the Bachelor's degree or its equivalentfor "
+#~ "access to the Faculty of Educational Sciences. </li> \n"
+#~ "<li> Certified true copy of the Birth Certificate. </li> \n"
+#~ "<li> Receipt of payment of the pre-registration fee which amounts to "
+#~ "10000 FCFA. </li> \n"
+#~ "   "
+
+#~ msgid ""
+#~ "\n"
+#~ "        <li>L'Université de Yaoundé I offre à l'étudiant la possibilité "
+#~ "de payer les frais d'examen, \n"
+#~ "                d'admission et de scolarité dans les agences Express "
+#~ "Union à travers le pays.</li>\n"
+#~ "        <li>Les étudiants peuvent également effectuer ces opérations dans "
+#~ "les agences bancaires UBA.</li>\n"
+#~ "      "
+#~ msgstr ""
+#~ "\n"
+#~ "<li> The University of Yaoundé I offers the student the possibility ofpay "
+#~ "the exam fee, \n"
+#~ "admission and tuition at Express Union agencies atacross the country. </"
+#~ "li> \n"
+#~ "<li> Students can also perform these operations inUBA bank branches. </"
+#~ "li> \n"
+#~ "  "
+
+#~ msgid "UY1 - Demande d"
+#~ msgstr "UY1 - Request d"

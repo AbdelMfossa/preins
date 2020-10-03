@@ -1,0 +1,63 @@
+{% extends 'falshfsfse/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block title %}
+    <title>UY1 - Suivre ma demande de préinscription</title>
+{% endblock title %}
+
+{% block content %}
+<div class="col-md-6">
+    <h2 style="color:#337ab7; font-weight:650">UNIVERSITE DE YAOUNDE I</h2>
+    <p style="font-size:20px">OPERATION DE PREINSCRIPTION <span id="ann"></span>
+    <form id='search_form'  name='search_form' class='f1'>
+        {% csrf_token %}
+        
+        {{ search_form| crispy }}
+        
+        <input type="submit" value="Afficher votre fiche" class="btn btn-charte btn-lg" style="">   
+    </form>
+    <div style="height:120px;"></div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+<script>
+
+	$( document ).ready(function() {
+		annee = new Date().getFullYear()
+		anneeSuiv = new Date().getFullYear() + 1
+		$('#ann').html( annee + "-" + anneeSuiv)
+	});
+
+    $( document ).on('submit', '#search_form', function(e) {
+        e.preventDefault();
+        code = $('#id_code').val();
+        if (code != "" && $.isNumeric( code)) {
+            var str = code.toString()
+            if (str.startsWith("2")) {
+                window.location.href = "/formulaire/fiche/"+ str +"/"
+            }
+
+            else if (str.startsWith("3")) {
+                window.location.href = "/ecoledoctorale/fiche/"+ str +"/"
+            }
+
+            else if (str.startsWith("1")) {
+                window.location.href = "/logement/logement_fiche/"+ str +"/"
+            }
+            else{
+                alert("Mauvais format de code! Veuillez renseigner le bon code")
+            }
+            
+        }
+        else{
+            alert("Veuillez renseigner le bon code")
+        }
+
+    });
+	
+</script>
+{% endblock content %}
+
+{% block aide %}
+
+{% endblock %}

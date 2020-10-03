@@ -1,0 +1,245 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Fiche de Démande CRFD</title>
+		<style type="text/css">
+			@page {
+				size: "A4";
+				margin: 1cm 1cm 1cm 1cm;
+				box-sizing: border-box;
+			}
+			
+			body{font-size: 9px; font-family: Arial, sans-serif;}
+			
+			.title {
+				font-weight: bold;
+				text-align: center;
+				margin-top: 20px;
+				padding-bottom: -75px;
+				font-size: 8px !important;
+			}
+		
+			#tete{
+				text-align: center;
+				margin-top: -15px;
+				font-size: 7px;
+			}
+
+			table {
+			  border-spacing: 0;
+			  border-collapse: collapse;
+			}
+
+			table th{
+				text-align: left;
+				font-weight: 500;
+			}
+
+  			.table {
+			  width: 100%;
+			  max-width: 100%;
+			}
+
+			.table > thead > tr > th,
+			.table > tbody > tr > th,
+			.table > tfoot > tr > th,
+			.table > thead > tr > td,
+			.table > tbody > tr > td,
+			.table > tfoot > tr > td {
+			  padding: 2px;
+			  line-height: 1.42857143;
+			  vertical-align: top;
+			  border-top: 1px solid #ddd;
+			}
+
+		
+		</style>
+	</head>
+
+	<body>
+		
+		<table id="tete">
+			<tr>
+				<td>République du Cameroun<br> Paix-Travail-Patrie <br> -------------- <br> Ministère de l'Enseignement Supérieur <br> -------------- <br> Université de Yaoundé I (UYI) <br> --------------</td>
+				<td style="font-size:12px;">{% include 'ecoledoctorale/logo.html' %}</td>
+				<td>Republic of Cameroon <br> Peace-Work-Fatherland <br> -------------- <br> Ministry of Higher Education <br> -------------- <br> The University of Yaounde I (UYI) <br> --------------</td>
+			</tr>
+		</table>
+		<div class="title">
+            FICHE DE DEMANDE D'INSCRIPTION EN CYCLE DE {{dossier.cycle|upper}}<br>{{dossier.ecoledoc|upper}} (Code : {{dossier.num_ordre}})        </div><br><br><br><br><br><br>
+
+        <div>
+	        <h5>Unite de Recherche et de Formation Doctorale : <b>{{dossier.uniterecherche|upper}}</b></h5>
+	        <!-- <h5>Intitule du Master : <b>{{dossier.institution|upper}}</b></h5> -->
+	        <!-- <h5>Option : <b>{{dossier.institution|upper}}</b></h5> -->
+	    </div>
+
+	    <div class="">
+	    	<h3 class="">ETAT CIVIL</h3>
+                <b>N° Matricule : </b> {{dossier.matricule_doc_uy1|upper}}<br><br>
+                <b>Nom et prénom :</b> {{dossier.nom|upper}} {{dossier.prenom|upper}}<br>
+                <b>Date et lieu de naissance :</b> {{dossier.date_nais|date:"d/m/Y"}} à {{dossier.lieu_nais|upper}}<br>
+                <b>Région d'origine :</b> {{dossier.region_origine|upper}}<br>
+                <b>Nationalité :</b> {{dossier.nationality|upper}}<br>
+                <b>Département d'origine :</b> {{dossier.dept_origine|upper}}<br>
+                <b>Nom du père :</b> {{dossier.nom_pere|upper}}<br>
+                <b>Nom de la mère :</b> {{dossier.nom_mere|upper}}<br>
+                <b>Profession : </b>{{dossier.profession|upper}} <br>
+                <b>Lieu d'affectation :</b> {{dossier.lieu_affectation|upper}}<br>
+                <b>Grade :</b> {{dossier.grade|upper}} <br>
+                <b>Echelon :</b>  {{dossier.ech|upper}}<br>
+                <b>Adresse personnelle :</b> {{dossier.adresse_perso|upper}} <br>
+                <b>Téléphone :</b> {{dossier.tel|upper}} <br>
+                <b>E-mail :</b> {{dossier.email}}<br>
+                <b>Formation initiale :</b> {{dossier.formationinitiale|upper}} <br>
+                <b>Disponibilité :</b> {{dossier.disponibilite|upper}} <br>
+        </div>
+
+        <div>
+        	<h3 class="">DIPLOMES DE LICENCE</h3>
+        	<table class="table">
+                <tr>
+	                <th>Nature</th>
+	                <th>Spécialité</th>
+	                <th>Nombre d'années en Lience</th>
+                </tr>
+                <tr>
+                    <td>{{dossier.naturelicence|upper}}</td>
+                    <td>{{dossier.optionlicence|upper}}</td>
+                    <td>{{dossier.anneelicence|upper}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div>
+        	<h3 class="">MASTER 1/MAITRISE</h3>
+                    <table class="table">
+                        <tr>
+                            <th>Nature</th>
+                            <th>Spécialité</th>
+                            <th>Etablissement</th>
+                            <th>Département</th>
+                            <th>Nombre d'années en Lience</th>
+                        </tr>
+                        <tr>
+							<td>{{dossier.naturemasterun|upper}}</td>
+                            <td>{{dossier.specialitemasterun|upper}}</td>
+                            <td>{{dossier.etablissementmasterun|upper}}</td>
+                            <td>{{dossier.departementmasterun|upper}}</td>
+                            <td>{{dossier.anneemasterun|upper}}</td>
+                        </tr>
+                    </table>
+
+        </div>
+
+        <!-- <div>
+        	<h3 class="">DETAILS SUR L'INSCRIPTION</h3>
+                    <table class="table">
+                        <tr>
+                            <th>Sujet du Master 2</th>
+                            <th>Spécialité</th>
+                            <th>Laboratoire d'accueil</th>
+                            <th>Intitulé du Master</th>
+                            <th>Option du Master</th>
+                        </tr>
+                        <tr>
+                            <td>{{dossier.nom|upper}} {{dossier.prenom|upper}}</td>
+                            <td>{{dossier.date_nais|date:"d/m/Y"}} à {{dossier.lieu_nais|upper}}</td>
+                            <td>{% if dossier.dateprecise %}OUI{% else %}NON{% endif %}</td>
+                            <td>{% if dossier.dateprecise %}OUI{% else %}NON{% endif %}</td>
+                            <td>{% if dossier.dateprecise %}OUI{% else %}NON{% endif %}</td>
+                        </tr>
+                    </table>
+
+        </div> -->
+
+        <div>
+        	<h3 class="">DETAILS SUR L'ENCADREMENT</h3>
+                    <table class="table">
+ 						<tr>
+                            <th>Nom du Directeur 1</th>
+                            <th>Nom du Directeur 2</th>
+                        </tr>
+                        <tr>
+                            <td>{{dossier.encadreur1|upper}}</td>
+                            <td>{% if dossier.encadreur2 %} {{dossier.encadreur2|upper}} {% endif %} &nbsp;</td>
+                        </tr>
+                    </table>
+        </div>
+
+        <div>
+        	<h3 class="">FINANCEMENT ET MOTIVATION</h3>
+        	<b>Source de financement : </b> {{dossier.sourcefinancement|upper}}<br>
+            <b>Motivation : </b> {{dossier.motivationthese}}<br><br>
+            {% if dossier.resumethese %} <b>Resume du projet de these : </b> {{dossier.resumethese}} {% endif %}<br><br>
+        </div>
+
+        
+
+        
+		<!-- <hr class="coupe"> -->
+		<!-- <p>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ </p>
+		<br>
+		
+		<p style="text-align:center; font-size: 10px;">RECEPISSE DE DEPÔT</p>
+
+
+		<table>
+			<tr>
+				<td><br><br>
+					<table>
+						<tr>
+							<td width="33%">Code :</td>
+							<td><b>{{dossier.num_ordre}}<b></td>
+						</tr>
+						<tr>
+							<td>Filière :</td>
+							<td>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</td>
+						</tr>
+						<tr>
+							<td>Etablissement :</td>
+							<td>{{dossier.institution|upper}}</td>
+						</tr>
+					</table>
+					<p><u><b>Infos de Paiement :</b></u></p>
+							<Table>
+								<tr>
+									<td width="33%">* N° Transaction :</td>
+									<td>{{dossier.transaction_number}}</td>
+								</tr>
+								<tr>
+									<td>* Agence de Paiement :</td>
+									<td>{{dossier.agence_paiement}}</td>
+								</tr>
+							</Table>
+				</td>
+
+				<td style="width: 20px;"></td>
+					
+				<td>
+					<table>
+						<tr>
+							<td width="33%">Nom(s) et Prénom(s) :</td>
+							<td>{{dossier.nom|upper}} {{dossier.prenom|upper}}</td>
+						</tr>
+						<tr>
+							<td>Niveau :</td>
+							<td>{{dossier.niv_acad}}</td>
+						</tr>
+					</table>
+					<br>
+					<center>
+						Avis :</br>
+						Signature
+					</center>
+				</td>
+			</tr>
+		</table> -->
+
+	</body>
+</html>

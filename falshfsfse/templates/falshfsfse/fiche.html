@@ -1,0 +1,267 @@
+{% extends 'falshfsfse/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block content %}
+<div class="col-md-12">
+    <div id="actions" class="col-sm-12 text-center">
+	  Actions :
+		<!-- <a id="" href="">Modifier ses informations</a>&nbsp; |  -->
+		<!-- <a id="" href="">Recevoir le dossier</a>&nbsp; | -->
+	    <a href="{% url 'falshfsfse:pdf_view' dossier.num_ordre %}" target="_blank">Visualiser sa fiche</a> |
+	    <a href="{% url 'falshfsfse:pdf_download' dossier.num_ordre %}" target="_blank">Telecharger sa fiche</a>
+	</div><br><br>
+    <div>
+        <h3 style="/*line-height:35px;*/">Pré-inscription à l'UY1 : {{dossier.institution|upper}}<br>(Code : <span style="color:green">{{dossier.num_ordre}}</span>)</h3>
+    </div>
+    <div>
+        <p style="color:red">Vous êtes attendu pour le dépôt du dossier physique du <u>12/10/2020</u> au <u>14/10/2020</u> en ({{dossier.institution|upper}})</p>
+    </div>
+
+    <div class="">        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Choix de faculté et de filières</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-responsive-sm">
+                        <tr>
+                            <th>Code</th>
+                            <th>Niveau</th>
+                            <th>Faculté choisie</th>
+                            <th>Filière 1</th>
+                            <th>Filière 2</th>
+                            <th>Filière 3</th>
+                        </tr>
+                        <tr>
+                            <td><b>{{dossier.num_ordre}}</b></td>
+                            <td>{{dossier.niv_acad}}</td>
+                            <td>{{dossier.institution|upper}}</td>
+                            <td>{{dossier.fil1}}</td>
+                            <td>{{dossier.fil2}}</td>
+                            <td>{{dossier.fil3}}</td>
+                        </tr>
+                        <tr>
+                            <th>Code d'orientation</th>
+                            <th>Statut</th>
+                        </tr>
+                        <tr>
+                            <td>{{dossier.code_questionnaire|upper}}</td>
+                            <td>{{dossier.nature_candidat|upper}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Etat-Civil du candidat</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                    <tr>
+                        <th>Noms et prénoms </th>
+                        <th>Date et lieu de naissance</th>
+                        <th>Date précise?</th>
+                        <th>Sexe</th>
+                        <th>Langue</th>
+                        <th>Sit. matrimoniale</th>
+                        <th>Sit. professionnelle</th>
+                    </tr>
+                    <tr>
+                        <td>{{dossier.nom|upper}} {{dossier.prenom|upper}}</td>
+                        <td>{{dossier.date_nais|date:"d/m/Y"}} à {{dossier.lieu_nais|upper}}</td>
+                        <td>{% if dossier.dateprecise %}OUI{% else %}NON{% endif %}</td>
+                        <td>{{dossier.sexe}}</td>
+                        <td>{{dossier.langue|upper}}</td>
+                        <td>{{dossier.stat_matri|upper}}</td>
+                        <td>{{dossier.sit_prof|upper}}</td>
+                    </tr>
+                    <tr>
+                        <th>E-mail</th>
+                        <th>CNI</th>
+                        <th>Téléphone</th>
+                        <th>Nationalité</th>
+                        <th>Région d'origine</th>
+                        <th>Département d'origine</th>
+                        <th>Adresse</th>
+                    </tr>
+                    <tr>
+                        <td>{{dossier.email}}</td>
+                        <td>{{dossier.num_cni}}</td>
+                        <td>{{dossier.tel}}</td>
+                        <td>{{dossier.nationality|upper}}</td>
+                        <td>{{dossier.region_origine|upper}}</td>
+                        <td>{{dossier.dept_origine|upper}}</td>
+                        <td>{{dossier.adresse_perso|upper}}</td>
+                    </tr>
+                    <tr>
+                        <th>Première langue</th>
+                    </tr>
+                    <tr>
+                        <td>{{dossier.langue|upper}}</td>
+                    </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Filiation et Infos. d'urgence</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>Nom de la mère</th>
+                            <th>Profession de la mère</th>
+                            <th>Nom du père</th>
+                            <th>Profession du père</th>
+                            <th>Urgence - Personne à contacter</th>
+                            <th>Téléphone</th>
+                            <th>Ville/adresse</th>
+                        </tr>
+                        <tr>
+                            <td>{{dossier.nom_mere|upper}}</td>
+                            <td>{{dossier.profession_mere|upper}}</td>
+                            <td>{{dossier.nom_pere|upper}}</td>
+                            <td>{{dossier.profession_pere|upper}}</td>
+                            <td>{{dossier.nom_urgence|upper}}</td>
+                            <td>{{dossier.tel_urgence|upper}}</td>
+                            <td>{{dossier.ville_urgence|upper}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Diplômes</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>Nom</th>
+
+                            {% if dossier.type_diplome|upper != 'GCE A LEVEL' %}
+                                <th>Série</th>
+                            {% endif %}
+
+                            <th>Année d'obtention</th>
+                            <th>Mention</th>
+                            <th>Moyenne</th>
+
+                            <th>Emetteur</th>
+                            <th>Date de délivrance</th>
+                        </tr>
+                        <tr>
+                            <td>{{dossier.type_diplome|upper}}</td>
+
+                            {% if dossier.type_diplome|upper != 'GCE A LEVEL' %}
+                                <td>{{dossier.serie}}</td>
+                            {% endif %}
+
+                            <td>{{dossier.annee_obtention|upper}}</td>
+                            <td>{{dossier.mention}}</td>
+                            
+                            {% if dossier.type_diplome|upper == 'GCE A LEVEL' %}
+                                <td>
+                                    {{dossier.paper_1}}:{{dossier.paper1_grade}};
+                                    {{dossier.paper_2}}:{{dossier.paper2_grade}};
+                                    {{dossier.paper_3}}:{{dossier.paper3_grade}};
+                                </td>
+                            {% else %}
+                                <td>{{dossier.moyenne}}</td>
+                            {% endif %}
+
+                            <td>{{dossier.dipl_etabl|upper}}</td>
+                            <td>{{dossier.dipl_date_deli|date:"d/m/Y"}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Quittance de paiement</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>Agence de paiement</th>
+                            <th>N° Transaction</th>
+                            <th>Montant</th>
+                        </tr>
+                        <tr>
+                            <td>{{dossier.agence_paiement}}</td>
+                            <td>{{dossier.transaction_number}}</td>
+                            <td>10000</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Informations complémentaires</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>Pratiquez-vous un sport ?</th>
+                            <th>Pratiquez-vous un art ?</th>
+                        </tr>
+                        <tr>
+                            <td>{% if dossier.list_sports %}OUI{% else %}NON{% endif %}</td>
+                            <td>{% if dossier.list_arts %}OUI{% else %}NON{% endif %}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Santé</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>Avez-vous un handicap ?</th>
+                            <th>Numéro du certificat médical</th>
+                            <th>Lieu du certificat médical</th>
+                        </tr>
+                        <tr>
+                            <td>{% if dossier.handicap %}OUI{% else %}NON{% endif %}</td>                            
+                            <td>{{dossier.num_certifmedical}}</td>                            
+                            <td>{{dossier.lieu_certifmedical}}</td>                            
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Je déclare sur l'honneur que les informations saisies sont exactes.</div>
+            <div class="panel-body">
+                CONFIRMEE
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}
+
+{% block aide %}
+
+{% endblock %}

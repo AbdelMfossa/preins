@@ -1,0 +1,133 @@
+{% extends 'ecoledoctorale/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block content %}
+    {% with titre="diplome"%}
+        {% include 'ecoledoctorale/menuetape.html' %}
+    {% endwith %}
+<div class="col-md-6">
+    <h3>{% trans 'Préinscription en' %} {{ request.session.ecole }}</h3>
+    <h6>{% trans 'Tous les champs marqués d\'un' %} <span style="color:red; margin-top:3px;">*</span> {% trans 'sont obligatoires.' %}</h6>
+    <form id='diplome_form' action="" method="post" class='f1' name='diplome_form'>
+        {% csrf_token %}
+        
+        {{ diplome_form| crispy }}
+
+        <input type="button" onclick="prev()" name ="bouton_diplome_prev" value="Précédent" class="btn btn-charte btn-lg" style="width: 116px">
+        <input type="submit" name = "bouton_diplome" value="Suivant" class="btn btn-charte btn-lg" style="width: 116px">   
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+<script type="text/javascript">
+
+    function prev() {
+        window.location.href = "/formulaire/faculte/"
+    }
+
+    $( document ).ready(function() {
+
+       $.when( loadfield() ).done(function() {
+            setTimeout(function(){
+
+                masquerShow();
+            },100);
+            
+        });
+
+        function masquerShow(){
+            // Masquer certains champs si diplome != GCE
+            if (($('#id_diplome').val() == "3" ) || ($('#id_diplome').val() == "4")) { // si diff de GCE
+                $('#div_id_nombresoumis').show()
+                $('#div_id_moyenne').hide()
+            }
+            else{
+                $('#div_id_nombresoumis').hide()
+                $('#div_id_moyenne').show()
+            }
+
+            $("#id_diplome").change(function () {
+
+                if ($(this).val() == "3" || $(this).val() == "4") {
+                    $('#div_id_nombresoumis').show()
+                    $('#div_id_moyenne').hide()
+                }
+                else{
+                    $('#div_id_nombresoumis').hide()
+                    $('#div_id_moyenne').show()
+                }
+
+            });
+        }
+
+
+        function loadfield(callback){
+            // Recharger les valeurs soumises dans les champs
+            $.ajax({
+                //type: 'POST',
+                url: '/formulaire/get_step_data/4/'+sessionStorage.getItem("codeUnique"),
+                data: {
+                    //csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+                },
+                dataType: 'json',
+                beforeSend: function() {
+                    //$('#ftco-loader').addClass('show');
+                },
+                success: function (data) {
+                    //alert('ok')
+                    document.diplome_form.diplome.value = data['diplome'] == undefined ? "" : data['diplome']
+                    document.diplome_form.anneeobtention.value = data['anneeobtention'] == undefined ? "" : data['anneeobtention']
+                    document.diplome_form.moyenne.value = data['moyenne'] == undefined ? "" : data['moyenne']
+                    document.diplome_form.detailjury.value = data['mention'] == undefined ? "" : data['mention']
+                    document.diplome_form.emetteur.value = data['emetteur'] == undefined ? "" : data['emetteur']
+                    document.diplome_form.date_emission.value = data['date_emission'] == undefined ? "" : data['date_emission']
+                    document.diplome_form.nombresoumis.value = data['nombresoumis'] == undefined ? "" : data['nombresoumis']
+                },
+                error: function (data) {
+                    //$('#ftco-loader').removeClass('show');
+                    //alert("Erreur AJAX");                                                                                                                          
+                }
+            })
+        }
+
+    });
+
+        
+
+
+    $( document ).on('submit', '#diplome_form', function(e) {
+            e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '/formulaire/step_4/',
+            data: {
+                diplome: $('#id_diplome').val(),
+                anneeobtention: $('#id_anneeobtention').val(),
+                moyenne: $('#id_moyenne').val(),
+                mention: $('#id_detailjury').val(),
+                emetteur: $('#id_emetteur').val(),
+                date_emission: $('#id_date_emission').val(),
+                nombresoumis: $('#id_nombresoumis').val(),
+                
+
+                csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+            },
+            beforeSend: function() {
+                $('#ftco-loader').addClass('show');
+            },
+            success: function (data) {
+                // $('#ftco-loader').removeClass('show');
+                // alert("ok") 
+                window.location.href = "/formulaire/sport/" // Le rediriger vers le step 5
+                //Penser a sauver les donnees dans la session                                                                                                            
+            },
+            error: function (data) {
+                // $('#ftco-loader').removeClass('show');
+                // alert("Erreur AJAX");                                                                                                                          
+            }
+        })
+
+    });
+
+</script>
+{% endblock content %}

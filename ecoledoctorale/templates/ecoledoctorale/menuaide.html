@@ -1,0 +1,27 @@
+{% load i18n %}
+
+<div class="col-md-3 col-sm-3">
+    <div class="panel panel-primary" style="border-color: #6a4e77 !important;">
+        <div class="panel-heading" style="background-color: #6a4e77 !important;">
+            <h3 class="panel-title">{% trans 'Procédure de dépôt physique du dossier' %}</h3>
+        </div>
+        <div class="panel-body">
+            <ul type="square">
+                {% blocktrans %}
+                <li>Fiche de demande d'inscription.</li>
+                <li>Une photocopie certifiée conforme de l'acte de naissance.</li>
+                <li>Une copie certifiée de la licence.</li>
+				<li>Un relevé de notes du Master 1.</li>
+				<li>Un Curriculum Vitae.</li>
+                <li>Une lettre de recommandation.</li>
+                <strong>Pour les candidats en thèse, il faut rajouter :</strong>
+                <li>Une copie certifiée du Master 2 ou du doctorat en Médecine, Pharmacie ou Odontostomatologie.</li>
+                <li>Le relevé de notes du Master 2.</li>
+                <li>Une preuve de financement.</li>
+                <li>Un projet de thèse approuvé par le directeur.</li>
+                <li>Tout autre document susceptible de donner des éclaircissements sur votre carrière académique et/ou professionnelle.</li>
+                {% endblocktrans %}
+            </ul>
+        </div>
+    </div>
+</div>

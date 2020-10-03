@@ -1,0 +1,199 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Fiche de logement</title>
+		<style>
+			@page {
+				size: "A4";
+				margin: 1cm 1cm 1cm 1cm;
+				
+			}
+			body{font-size: 10px; font-family: Arial, sans-serif;}
+
+			table {
+				border-collapse: collapse;
+				width: 100%;
+				padding-top: -15px;
+			}
+			th, td {
+				padding-top: 2px;
+				padding-bottom: 1px;
+				text-align: left;
+				border-bottom: 1px solid #ddd;
+				font-size: 8px;
+			}
+			h5{
+				style="padding-bottom: -10px;"
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<!-- Content for Static Frame 'header_frame' 
+		<div id="header_content">
+			<h3>Dennnis Ivanov Company</h3>
+		</div> -->
+
+		<!-- Content for Static Frame 'footer_frame' 
+		<div id="footer_content">(c) - page <pdf:pagenumber>
+			of <pdf:pagecount>
+		</div> -->
+
+		<!-- HTML Content -->
+		<center>{% include 'falshfsfse/logo.html' %}</center>
+		<h2 style="text-align:center">Demande de chambre à la Cité Universitaire de l'UYI sous le numero d'ordre : {{dossier.pk}}</h2>
+		<table class="table">
+			<thead><h5>ETAT-CIVIL DU CANDIDAT</h5></thead>
+			<tr>
+				<th>Noms et prénoms </th>
+				<th>Date et lieu de naissance</th>
+				<th>Sexe</th>
+				<th>Nom de la Cité</th>
+				<th>Handicap</th>
+			</tr>
+			<tr>
+				<td>{{dossier.nom|upper}} {{dossier.prenom|upper}}</td>
+				<td>{{dossier.date_nais|date:"d/m/Y"}} à {{dossier.lieu_nais|upper}}</td>
+				<td>{{dossier.sexe|upper}}</td>
+				<td>{{dossier.cite}}</td>
+				<td>{% if dossier.handicap %}OUI{% else %}NON{% endif %}</td>
+			</tr>
+			<tr>
+				<th>Résidence actuelle</th>
+				<th>E-mail</th>
+				<th>Téléphone</th>
+				<th>Nationalité</th>
+				<th>Région d'origine</th>
+			</tr>
+			<tr>
+				<td>{{dossier.residence_actuelle|upper}}</td>
+				<td>{{dossier.email}}</td>
+				<td>{{dossier.tel}}</td>
+				<td>{{dossier.nationality|upper}}</td>
+                <td>{{dossier.region_origine|upper}}</td>
+			</tr>
+			<tr>
+				<th>Département d'origine</th>
+				<th>Nombre d'enfants</th>
+			</tr>
+			<tr>
+				<td>{{dossier.dept_origine|upper}}</td>
+				<td>/</td>
+			</tr>
+		</table>
+
+
+		<table class="table">
+			<thead><h5>CURSUS SCOLAIRE</h5></thead>
+			<tr>
+				<th>Etablissement</th>
+				<th>N° matricule</th>
+				<th>Niveau d'études</th>
+				<th>Filière</th>
+				<th>Niveau/classe reprise</th>
+				<th>Avez-vous habité la Cité-U ?</th>
+				<th>La 1ère année</th>
+				<th>La dernière année</th>
+			</tr>
+			<tr>
+				<td>{{dossier.institution|upper}}</td>
+                <td>{{dossier.nmat|upper}}</td>
+                <td>{{dossier.niveau}}</td>
+                <td>{{dossier.filiere|upper}}</td>
+                <td>{{dossier.niveau_redouble}}</td>
+                <td>{% if dossier.ancien_resident %}OUI{% else %}NON{% endif %}</td>
+                <td>{% if dossier.ancien_resident %}{{dossier.premiere_annee_resi}}{% endif %} &nbsp;</td>
+                <td>{% if dossier.ancien_resident %}{{dossier.derniere_annee_resi}}{% endif %} &nbsp;</td>
+			</tr>
+		</table>
+
+
+		<table class="table">
+			<thead><h5>AUTRES RENSEIGNEMENTS</h5></thead>
+			<tr>
+				<th>Nom du père</th>
+				<th>Profession du père</th>
+				<th>Nom de la mère</th>
+				<th>Profession de la mère</th>
+				<th>Adresse des parents</th>
+				<th>Correspondant à Yaoundé</th>
+				<th>Téléphone</th>
+				<th>Ville/Adresse</th>
+			</tr>
+			<tr>
+				<td>{{dossier.nom_pere|upper}}</td>
+				<td>{{dossier.profession_pere|upper}}</td>
+				<td>{{dossier.nom_mere|upper}}</td>
+				<td>{{dossier.profession_mere|upper}}</td>
+				<td>{{dossier.adresse_parent|upper}}</td>
+				<td>{{dossier.nom_urgence|upper}}</td>
+				<td>{{dossier.tel_urgence|upper}}</td>
+				<td>{{dossier.adresse_urgence|upper}}</td>
+			</tr>
+		</table>
+
+		<table class="table">
+			<thead><h5>SPORTS ET ARTS</h5></thead>
+			<tr>
+				<th>Pratiquez-vous un sport ?</th>
+				<th>Pratiquez-vous un art ?</th>
+			</tr>
+			<tr class="dossier_show">
+				<td>{% if dossier.list_sports %}OUI{% else %}NON{% endif %}</td>
+				<td>{% if dossier.list_arts %}OUI{% else %}NON{% endif %}</td>
+			</tr>
+		</table>
+
+		<table class="table">
+			<tr>
+				<td>Je déclare sur l'honneur que les informations saisies sont exactes.</td>
+				<td>
+					<p class="dossier_show">CONFIRMEE<p>
+				</td>
+			</tr>
+		</table><br>
+
+		<div class="breakafter">
+			<h5 style="padding-bottom: -10px;">ENGAGEMENT</h5>
+			Je soussigné, <span style="font-weight:bold;">{{dossier.nom|upper}} {{dossier.prenom|upper}}</span>, né(e) le <span style="font-weight:bold;">{{dossier.date_nais|date:"d/m/Y"}}</span> à <span style="font-weight:bold;">{{dossier.lieu_nais|upper}}</span> <br /> 
+			Téléphone :  <span style="font-weight:bold;">{{dossier.tel}}</span> Email :  <span style="font-weight:bold;">{{dossier.email}}</span> <br /> 
+			Etablissement :  <span style="font-weight:bold;">{{dossier.institution|upper}}</span> Filière :  <span style="font-weight:bold;">{{dossier.filiere|upper}}</span> Niveau :  <span style="font-weight:bold;">{{dossier.niveau}}</span> Matricule :  <span style="font-weight:bold;">{{dossier.nmat|upper}}</span> <br /> 
+			m'engage, au cas où une chambre venait à m'être attribué, à respecter scrupuleusement le Règlement Intérieur de la Cité Universitaire, et notamment :
+			<ul type="square">
+				<li>à payer intégralement mon loyer annuel ((10) dix mois allant du 1er Octobre au 31 Juillet de l’année académique en cours)  soit : </li>
+					<ul>
+						<li>Chambre individuelle : <span style="font-weight:bold;">5.000 Frs x 10 = 50.000 Frs (loyer) + 10.000 Frs (caution) = 60.000 (soixante mille) Frs ;</span></li>
+						<li>Chambre collective : <span style="font-weight:bold;">4.000 Frs  x10 = 40.000 Frs (loyer) + 10.000 Frs (caution) = 50.000 (cinquante mille) Frs ;</span></li>
+					</ul>
+				<li><span style="font-weight:bold;">à libérer obligatoirement ma chambre au plus tard le 31 juillet de l’année académique en cours ;</span></li>
+				<li>à ne pas changer délibérément de chambre  ;</li>
+				<li>à ne pas céder ma chambre à une autre personne  ;</li>
+				<li>à n’héberger personne dans ma chambre  ;</li>
+				<li>à ne pas déplacer le matériel d’une chambre à une autre (lit, matelas, table, chaise, banc, miroir, etc.) sans autorisation préalable de la Division des Logements  ;</li>
+				<li>à conserver ma chambre en bon état en évitant de planter les clous ou crochets aux murs et d’y coller des affiches ;</li>
+				<li>à réparer à mes frais, toutes les dégradations dues à ma négligence ;</li>
+				<li>à assurer la propreté des lieux communs (couloirs, WC, escaliers, cours, etc.) suivant un planning établi  ;</li>
+				<li>à ne pas jeter les ordures par la fenêtre, mais les déposer dans les poubelles affectées à cet effet  ;</li>
+				<li>à prendre part aux travaux d’investissement humain dans le cadre de la campagne « CAMPUS PROPRE »  ;</li>
+				<li>à ne pas être responsable des visites intempestives, des bruits, des agressions et du vol à la Cité ;</li>
+				<li>à ne mettre aucune affiche à la Cité Universitaire sans une autorisation préalable du Directeur du Centre des Œuvres Universitaires ;</li>
+				<li>à ne tenir aucune réunion politique ou religieuse dans ma chambre ;</li>
+			</ul>
+
+			Faute pour moi d’observer scrupuleusement ces points du Règlement Intérieur, j’accepte que me soient appliquées les sanctions prévues par ledit Règlement. 
+			<br /> 
+			<br /> 
+
+			LU ET APPROUVE
+			<br /> 
+			Signature
+
+		</div>
+
+	</body>
+</html>

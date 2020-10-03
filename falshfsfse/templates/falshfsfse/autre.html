@@ -1,0 +1,95 @@
+{% extends 'falshfsfse/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block content %}
+    {% with titre="autre"%}
+        {% include 'falshfsfse/menuetape.html' %}
+    {% endwith %}
+<div class="col-md-6">
+    <h3>{% trans 'Préinscription en' %} {{ request.session.fac }}</h3>
+    <h6>{% trans 'Tous les champs marqués d\'un' %} <span style="color:red; margin-top:3px;">*</span>{% trans 'sont obligatoires.' %}</h6>
+    <form id='autre_form' action="" method="post" class='f1' name='autre_form'>
+        {% csrf_token %}
+        
+        {{ autre_form| crispy }}
+
+        <input type="button" onclick="prev()" name = "bouton_autre_prev" value="Précédent" class="btn btn-charte btn-lg" style="width: 116px">
+        <input type="submit" name = "bouton_autre" value="Suivant" class="btn btn-charte btn-lg" style="width: 116px">   
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+<script type="text/javascript">
+
+    function prev() {
+        location.replace("/formulaire/civilite/{{ request.session.code_fac }}")
+    }
+
+    $( document ).ready(function() {
+
+        if(sessionStorage.getItem("codeUnique") != null && sessionStorage.getItem("codeUnique") != "" && sessionStorage.getItem("codeUnique") != undefined){
+        // Recharger les valeurs soumises dans les champs
+            $.ajax({
+                //type: 'POST',
+                url: '/formulaire/get_step_data/6/'+sessionStorage.getItem("codeUnique"),
+                data: {
+                    //csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+                },
+                dataType: 'json',
+                beforeSend: function() {
+                    //$('#ftco-loader').addClass('show');
+                },
+                success: function (data) {
+                    if (data['paiement'] != undefined && data['paiement'] != ""){
+                        document.diplome_form.paiement.value = data['paiement']  
+                    }
+                    if (data['numerotransaction'] != undefined && data['numerotransaction'] != ""){
+                        document.diplome_form.numerotransaction.value = data['numerotransaction']  
+                    }
+                    // document.autre_form.paiement.value = data['paiement'] == undefined ? "" : data['paiement']
+                    // document.autre_form.numerotransaction.value = data['numerotransaction'] == undefined ? "" : data['numerotransaction']
+                    
+                    
+                },
+                error: function (data) {
+                    //$('#ftco-loader').removeClass('show');
+                    //alert("Erreur AJAX");                                                                                                                          
+                }
+            })
+        }
+    });
+
+
+    $( document ).on('submit', '#autre_form', function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url: '/formulaire/step_6/',
+            data: {
+                paiement: $('#id_paiement').val(),
+                numerotransaction: $('#id_numerotransaction').val(),
+                
+
+                csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+            },
+            beforeSend: function() {
+                $('#ftco-loader').addClass('show');
+            },
+            success: function (data) {
+                //$('#ftco-loader').removeClass('show');
+                //alert("ok") 
+                //window.location.href = "/formulaire/fiche/"+data['code']+"/" // Le rediriger vers sa fiche
+                window.location.href = "/formulaire/filiation/" // Le rediriger vers sa fiche
+                //Penser a sauver les donnees dans la session                                                                                                            
+            },
+            error: function (data, status) {
+                $('#ftco-loader').removeClass('show');
+                alert("Veuillez remplir tous les champs");                                                                                                                        
+            }
+        })
+
+    });
+
+</script>
+{% endblock content %}

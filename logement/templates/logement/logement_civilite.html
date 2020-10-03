@@ -1,0 +1,104 @@
+{% extends 'logement/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block title %}
+    <title>{% trans "UY1 - Demande d'attribution de chambre à la Cité Universitaire" %}</title>
+{% endblock title %}
+
+{% block content %}
+    {% with titre="logement_civilité"%}
+        {% include 'logement/logement_menuetape.html' %}
+    {% endwith %}
+<div class="col-md-6">
+    <h3>{% trans "Demande de logement à la cité Universitaire" %}</h3>
+    <form id='civilite_form' name='civilite_form' action="" method="post" class='f1'>
+        {% csrf_token %}
+        
+        {{ logement_civilite_form| crispy }}
+        
+        <input type="submit" value="Suivant" class="btn btn-charte btn-lg" style="width: 116px">   
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+<script type="text/javascript">
+
+    $( document ).ready(function() {
+        if(sessionStorage.getItem("LogCodeUnique") != null && sessionStorage.getItem("LogCodeUnique") != "" && sessionStorage.getItem("LogCodeUnique") != undefined){
+        // Recharger les valeurs soumises dans les champs
+            $.ajax({
+                //type: 'POST',
+                url: '/logement/get_step_data/1/'+sessionStorage.getItem("LogCodeUnique"),
+                data: {
+                    //csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+                },
+                dataType: 'json',
+                beforeSend: function() {
+                    //$('#ftco-loader').addClass('show');
+                },
+                success: function (data) {
+                    document.civilite_form.prenom.value = data['prenom'] == undefined ? "" : data['prenom']
+                    document.civilite_form.nom.value = data['nom'] == undefined ? "" : data['nom']
+                    document.civilite_form.sexe.value = data['sexe'] == undefined ? "" : data['sexe']
+                    document.civilite_form.datenaissance.value = data['datenaissance'] == undefined ? "" : data['datenaissance']
+                    document.civilite_form.dateprecise.value = data['dateprecise'] == undefined ? "" : data['dateprecise']
+                    document.civilite_form.lieunaissance.value = data['lieunaissance'] == undefined ? "" : data['lieunaissance']
+                    document.civilite_form.handicap.value = data['handicap'] == undefined ? "" : data['handicap']
+                    document.civilite_form.residence_parent.value = data['residence_parent'] == undefined ? "" : data['residence_parent']
+                    document.civilite_form.telephone.value = data['telephone'] == undefined ? "" : data['telephone']
+                    document.civilite_form.email.value = data['email'] == undefined ? "" : data['email']
+                    document.civilite_form.residence.value = data['residence'] == undefined ? "" : data['residence']
+
+                },
+                error: function (data) {
+                    //$('#ftco-loader').removeClass('show');
+                    //alert("Erreur AJAX");                                                                                                                          
+                }
+            })
+        }
+    });
+
+    $( document ).on('submit', '#civilite_form', function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '/logement/step_1/',
+            data: {
+                prenom: $('#id_prenom').val(),
+                nom: $('#id_nom').val(),
+                datenaissance: $('#id_datenaissance').val(),
+                lieunaissance: $('#id_lieunaissance').val(),
+                dateprecise: document.civilite_form.dateprecise.value,
+                sexe: $('#id_sexe').val(),
+                residence_parent: $('#id_residence_parent').val(),
+                handicap: document.civilite_form.handicap.value,
+                telephone: $('#id_telephone').val(),
+                email: $('#id_email').val(),
+                residence: $('#id_residence').val(),
+
+                csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+            },
+            beforeSend: function() {
+                $('#ftco-loader').addClass('show');
+            },
+            success: function (data) {
+                // $('#ftco-loader').removeClass('show');
+                //alert(data['code']) 
+                sessionStorage.LogCodeUnique = data['code']
+                window.location.href = "/logement/logement_filiation/" // Le rediriger vers le step 2
+                // Penser a sauver les donnees dans la session                                                                                                            
+            },
+            error: function (data) {
+                $('#ftco-loader').removeClass('show');
+                alert("Erreur au niveau du seveur");                                                                                                                          
+            }
+        })
+
+    });
+
+</script>
+{% endblock content %}
+
+{% block aide %}
+    {% include 'logement/logement_menuaide.html' %}
+{% endblock %}
