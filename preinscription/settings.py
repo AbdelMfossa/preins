@@ -108,9 +108,9 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.config(
-    default="mysql://preinscription:%23Preinscription%402020!@51.91.126.42:3306/preinscriptions",
-)
+# DATABASES['default'] = dj_database_url.config(
+#     default="mysql://preinscription:%23Preinscription%402020!@51.91.126.42:3306/preinscriptions",
+# )
 
 # passw = str("%23Preinscription%402020!")
 
