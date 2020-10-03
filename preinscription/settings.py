@@ -97,16 +97,20 @@ WSGI_APPLICATION = 'preinscription.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'preinscriptions',
-        'USER': 'preinscription',
-        'PASSWORD': '#Preinscription@2020!',
-        'HOST': '51.91.126.42',
-        'PORT': '3306',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'preinscriptions',
+#         'USER': 'preinscription',
+#         'PASSWORD': '#Preinscription@2020!',
+#         'HOST': '51.91.126.42',
+#         'PORT': '3306',
+#     }
+# }
+
+DATABASES['default'] = dj_database_url.config(
+    default="mysql://preinscription:'#Preinscription@2020!'@51.91.126.42:3306/'preinscriptions'",
+)
 
 passw = str("%23Preinscription%402020!")
 
